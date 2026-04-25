@@ -3,11 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>easthopemart.ng | Africa Agent Program</title>
+<title>easthopemart.ng | Agent & Products & Lucky Draw</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
 body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
-.container{max-width:420px;margin:0 auto;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 18px #00000018;position:relative;}
+
+.tab-nav{max-width:800px;margin:0 auto 20px;display:flex;gap:8px;}
+.tab-btn{flex:1;padding:12px;border:none;border-radius:12px 12px 0 0;background:#dee2e6;font-size:14px;font-weight:bold;cursor:pointer;transition:0.3s;}
+.tab-btn.active{background:#007bbd;color:#fff;}
+
+.wrap{max-width:800px;margin:0 auto;}
+.tab-content{display:none;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 18px #00000018;padding:0;}
+.tab-content.show{display:block;}
+
 .head{background:#007bbd;color:#fff;text-align:center;padding:28px 15px;position:relative;}
 .head h1{font-size:22px;margin-bottom:6px;font-weight:bold;}
 .head p{opacity:0.95;font-size:15px;margin-top:8px;}
@@ -26,53 +34,84 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 .qr-code-box img{width:160px;height:160px;border-radius:12px;}
 .qr-code-box p{font-size:13px;color:#fff;margin-top:8px;opacity:0.9;}
 
-/* 语言切换按钮 - 悬浮右上角 */
 .lang-switch{position:absolute;top:15px;right:15px;background:#fff;border-radius:50px;padding:6px 12px;font-size:13px;font-weight:bold;color:#007bbd;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.1);z-index:10;}
-.lang-switch:hover{background:#f0f7ff;}
+
+.section{padding:30px 22px;}
+.section-title{text-align:center;font-size:20px;color:#007bbd;font-weight:bold;margin-bottom:25px;}
+.product-wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;}
+.product-card{background:#f8f9fa;padding:15px;border-radius:12px;text-align:center;border:1px solid #eee;}
+.product-card h3{font-size:14px;margin:8px 0;color:#222;}
+.price{color:#25D366;font-weight:bold;font-size:15px;}
+.form-box{padding:25px 22px;}
+.form-box input,.form-box textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:10px;font-size:14px;}
+.form-box button{width:100%;padding:13px;background:#007bbd;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:8px;}
+
+.whatsapp-float{position:fixed;right:20px;bottom:20px;background:#25D366;border-radius:50%;width:55px;height:55px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px #0003;z-index:999;}
+.whatsapp-float a{color:#fff;font-size:26px;text-decoration:none;}
+.music-btn{position:fixed;left:20px;bottom:20px;background:#007bbd;color:#fff;border:none;border-radius:50%;width:50px;height:50px;font-size:20px;z-index:999;cursor:pointer;box-shadow:0 4px 12px #0002;}
+
+.draw-page{padding:30px 20px;text-align:center;}
+.draw-top-text{font-size:16px;color:#ff672b;font-weight:bold;margin-bottom:20px;}
+.chance-box{background:#fff2e6;border-radius:12px;padding:15px;margin-bottom:20px;}
+.chance-num{font-size:28px;color:#ff4444;font-weight:bold;}
+
+.wheel-box{width:300px;height:300px;margin:0 auto;position:relative;}
+.wheel{width:100%;height:100%;border-radius:50%;background:conic-gradient(#ff6b6b 0deg 60deg,#ffd93d 60deg 120deg,#6bcb77 120deg 180deg,#4d96ff 180deg 240deg,#b376f4 240deg 300deg,#ff9f43 300deg 360deg);position:relative;transition:all 4s cubic-bezier(0.17,0.67,0.13,0.99);box-shadow:0 0 20px #ffc896;}
+.wheel-center{position:absolute;width:80px;height:80px;background:#fff;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#ff672b;box-shadow:0 2px 10px #0002;}
+.arrow{position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:30px solid #fff;z-index:3;}
+
+.draw-btn{margin-top:25px;padding:14px 40px;background:#ff672b;color:#fff;border:none;border-radius:50px;font-size:17px;font-weight:bold;cursor:pointer;}
+.share-btn{margin-top:12px;padding:12px 30px;background:#25D366;color:#fff;border:none;border-radius:50px;font-size:16px;font-weight:bold;cursor:pointer;}
+
+.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:#00000077;display:none;align-items:center;justify-content:center;z-index:9999;}
+.popup-content{background:#fff;padding:30px;border-radius:16px;text-align:center;width:80%;max-width:350px;}
+.popup-content h3{color:#ff672b;margin-bottom:15px;font-size:20px;}
+.popup-content p{font-size:15px;color:#333;margin-bottom:20px;}
+.popup-close{padding:10px 25px;background:#007bbd;color:#fff;border:none;border-radius:8px;cursor:pointer;}
 </style>
 </head>
 <body>
 
-<div class="container">
-  <!-- 语言切换按钮 -->
-  <div class="lang-switch" onclick="toggleLang()">FR / EN</div>
+<audio id="bgMusic" loop preload="auto">
+  <source src="bg.mp3" type="audio/mpeg">
+<button class="music-btn" id="musicBtn">🔊</button>
 
-  <!-- 头部区域 -->
+<div class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab(0)">Agent Program</button>
+    <button class="tab-btn" onclick="switchTab(1)">Products & Inquiry</button>
+    <button class="tab-btn" onclick="switchTab(2)">Lucky Draw</button>
+</div>
+
+<div class="wrap">
+<div class="tab-content show">
+  <div class="lang-switch" onclick="toggleLang()">FR / EN</div>
   <div class="head">
     <h1 data-en="BECOME OUR AFRICA AGENT" data-fr="DEVENEZ NOTRE AGENT EN AFRIQUE"></h1>
-    <p data-en="China Import • Dropshipping • One Stop Business" data-fr="Import Chine • Dropshipping • Business Tout-en-Un"></p >
+    <p data-en="China Import • Dropshipping • One Stop Business" data-fr="Import Chine • Dropshipping • Business Tout-en-Un"></p>
     <div class="website-tag" data-en="Official Website: easthopemart.ng" data-fr="Site Officiel: easthopemart.ng"></div>
   </div>
-
-  <!-- 支持对象 -->
   <div class="box">
     <h2 data-en="Who We Support" data-fr="Qui Nous Soutenons"></h2>
-    <p data-en="✔ Africa small sellers & resellers" data-fr="✔ Petits vendeurs et revendeurs en Afrique"></p >
-    <p data-en="✔ WhatsApp business owners" data-fr="✔ Propriétaires de business WhatsApp"></p >
-    <p data-en="✔ Housewife / Student / Part-time agent" data-fr="✔ Femmes au foyer / Étudiants / Agents à temps partiel"></p >
-    <p data-en="✔ Nigeria / Ghana / West Africa buyers" data-fr="✔ Acheteurs du Nigeria / Ghana / Afrique de l'Ouest"></p >
+    <p data-en="✔ Africa small sellers & resellers" data-fr="✔ Petits vendeurs et revendeurs en Afrique"></p>
+    <p data-en="✔ WhatsApp business owners" data-fr="✔ Propriétaires de business WhatsApp"></p>
+    <p data-en="✔ Housewife / Student / Part-time agent" data-fr="✔ Femmes au foyer / Étudiants / Agents à temps partiel"></p>
+    <p data-en="✔ Nigeria / Ghana / West Africa buyers" data-fr="✔ Acheteurs du Nigeria / Ghana / Afrique de l'Ouest"></p>
   </div>
-
-  <!-- 一站式服务 -->
   <div class="box">
     <h2 data-en="Our One-Stop Service" data-fr="Notre Service Tout-en-Un"></h2>
-    <p data-en="1. China factory sourcing & wholesale price" data-fr="1. Approvisionnement en usine Chine & prix de gros"></p >
-    <p data-en="2. Goods inspection & strict quality control" data-fr="2. Inspection des marchandises & contrôle qualité strict"></p >
-    <p data-en="3. Package consolidation & professional repacking" data-fr="3. Consolidation des colis & réemballage professionnel"></p >
-    <p data-en="4. Air & Sea shipping + local customs clearance" data-fr="4. Expédition aérienne et maritime + dédouanement local"></p >
-    <p data-en="5. Safe door-to-door delivery all over Nigeria" data-fr="5. Livraison porte-à-porte sûre dans tout le Nigeria"></p >
+    <p data-en="1. China factory sourcing & wholesale price" data-fr="1. Approvisionnement en usine Chine & prix de gros"></p>
+    <p data-en="2. Goods inspection & strict quality control" data-fr="2. Inspection des marchandises & contrôle qualité strict"></p>
+    <p data-en="3. Package consolidation & professional repacking" data-fr="3. Consolidation des colis & réemballage professionnel"></p>
+    <p data-en="4. Air & Sea shipping + local customs clearance" data-fr="4. Expédition aérienne et maritime + dédouanement local"></p>
+    <p data-en="5. Safe door-to-door delivery all over Nigeria" data-fr="5. Livraison porte-à-porte sûre dans tout le Nigeria"></p>
   </div>
-
-  <!-- 代理利润模式 -->
   <div class="box">
     <h2 data-en="Agent Profit Mode" data-fr="Mode de Profit de l'Agent"></h2>
     <div class="highlight" data-en="NO STOCK • NO BIG INVESTMENT • ZERO RISK" data-fr="SANS STOCK • SANS GROS INVESTISSEMENT • RISQUE ZÉRO"></div>
-    <p data-en="You share products & take local orders" data-fr="Vous partagez les produits & prenez les commandes locales"></p >
-    <p data-en="We source, pack and ship from China" data-fr="Nous achetons, emballons et expédions depuis la Chine"></p >
-    <p data-en="You earn stable high profit from every order" data-fr="Vous gagnez un profit stable et élevé sur chaque commande"></p >
+    <p data-en="You share products & take local orders" data-fr="Vous partagez les produits & prenez les commandes locales"></p>
+    <p data-en="We source, pack and ship from China" data-fr="Nous achetons, emballons et expédions depuis la Chine"></p>
+    <p data-en="You earn stable high profit from every order" data-fr="Vous gagnez un profit stable et élevé sur chaque commande"></p>
   </div>
-
-  <!-- 热门品类 -->
   <div class="box">
     <h2 data-en="Hot Selling Categories" data-fr="Catégories de Produits Populaires"></h2>
     <div class="flex-row">
@@ -84,61 +123,233 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
       <div class="flex-item" data-en="Home & Kitchen Appliances" data-fr="Appareils Électroménagers"></div>
     </div>
   </div>
-
-  <!-- 选择我们的理由 -->
   <div class="box">
     <h2 data-en="Why Choose easthopemart.ng" data-fr="Pourquoi Choisir easthopemart.ng"></h2>
-    <p data-en="✔ Verified official Nigeria shopping platform" data-fr="✔ Plateforme de shopping officielle vérifiée au Nigeria"></p >
-    <p data-en="✔ Low MOQ & friendly trial order support" data-fr="✔ MOQ bas & support de commande d'essai convivial"></p >
-    <p data-en="✔ 100% original China factory low price" data-fr="✔ Prix bas direct usine Chine 100% original"></p >
-    <p data-en="✔ Stable shipping to Lagos & all Nigeria" data-fr="✔ Expédition stable vers Lagos & tout le Nigeria"></p >
-    <p data-en="✔ Long-term exclusive agent discount" data-fr="✔ Remise agent exclusive à long terme"></p >
+    <p data-en="✔ Verified official Nigeria shopping platform" data-fr="✔ Plateforme de shopping officielle vérifiée au Nigeria"></p>
+    <p data-en="✔ Low MOQ & friendly trial order support" data-fr="✔ MOQ bas & support de commande d'essai convivial"></p>
+    <p data-en="✔ 100% original China factory low price" data-fr="✔ Prix bas direct usine Chine 100% original"></p>
+    <p data-en="✔ Stable shipping to Lagos & all Nigeria" data-fr="✔ Expédition stable vers Lagos & tout le Nigeria"></p>
+    <p data-en="✔ Long-term exclusive agent discount" data-fr="✔ Remise agent exclusive à long terme"></p>
   </div>
-
-  <!-- CTA 行动号召 -->
   <div class="cta" data-en="Start Your Profitable Africa Business Today" data-fr="Démarrez Votre Business Rentable en Afrique Aujourd'hui"></div>
-
-  <!-- 联系区域 -->
   <div class="contact">
-    <p data-en="Get Full Catalog & Exclusive Agent Price" data-fr="Obtenez le Catalogue Complet & le Prix Agent Exclusif"></p >
-    <p style="margin:8px 0" data-en="Official Website: easthopemart.ng" data-fr="Site Officiel: easthopemart.ng"></p >
-    <a class="whatsapp-btn" href=" " data-en="Chat On WhatsApp Now: +8618069950755" data-fr="Discutez sur WhatsApp Maintenant: +8618069950755"></a >
-
-    <!-- 二维码区域 - 这里直接用Base64内嵌，无需外部文件 -->
-    <div class="qr-code-box">
-      < img src="data:image/png;base64,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" alt="WhatsApp QR Code">
-      <p data-en="Scan QR Code to add us on WhatsApp" data-fr="Scannez le QR code pour nous ajouter sur WhatsApp"></p >
-    </div>
+    <p data-en="Get Full Catalog & Exclusive Agent Price" data-fr="Obtenez le Catalogue Complet & le Prix Agent Exclusif"></p>
+    <p style="margin:8px 0" data-en="Official Website: easthopemart.ng" data-fr="Site Officiel: easthopemart.ng"></p>
+    <a class="whatsapp-btn" href="https://wa.me/8618069950755" data-en="Chat On WhatsApp Now: +8618069950755" data-fr="Discutez sur WhatsApp Maintenant: +8618069950755"></a>
   </div>
-
 </div>
 
-<!-- 语言切换核心脚本 -->
+<div class="tab-content">
+  <div class="section">
+    <h2 class="section-title" data-en="Our Wholesale Products" data-fr="Nos Produits de Gros"></h2>
+    <div class="product-wrap">
+      <div class="product-card">
+        <h3 data-en="PPR Welding Machine" data-fr="Machine à souder PPR"></h3>
+        <div class="price" data-en="Factory Price" data-fr="Prix usine"></div>
+        <p data-en="Bulk wholesale" data-fr="Gros volume"></p>
+      </div>
+      <div class="product-card">
+        <h3 data-en="LED Lights Series" data-fr="Série Lumières LED"></h3>
+        <div class="price" data-en="Low MOQ" data-fr="MOQ bas"></div>
+        <p data-en="Africa hot sale" data-fr="Meilleure vente Afrique"></p>
+      </div>
+      <div class="product-card">
+        <h3 data-en="Auto Spare Parts" data-fr="Pièces Automobiles"></h3>
+        <div class="price" data-en="Mixed Order" data-fr="Commande mixte"></div>
+        <p data-en="Stable supply" data-fr="Approvisionnement stable"></p>
+      </div>
+      <div class="product-card">
+        <h3 data-en="Home Hardware Tools" data-fr="Outils Quincaillerie"></h3>
+        <div class="price" data-en="One-stop Buy" data-fr="Achat tout-en-un"></div>
+        <p data-en="China direct" data-fr="Direct Chine"></p>
+      </div>
+      <div class="product-card">
+        <h3 data-en="Ice Maker Machine" data-fr="Machine à glace"></h3>
+        <div class="price" data-en="Big Stock" data-fr="Grand stock"></div>
+        <p data-en="Fast shipment" data-fr="Expédition rapide"></p>
+      </div>
+      <div class="product-card">
+        <h3 data-en="Packing Bottle" data-fr="Bouteille d'emballage"></h3>
+        <div class="price" data-en="Custom OK" data-fr="Personnalisation OK"></div>
+        <p data-en="Support OEM" data-fr="Support OEM"></p>
+      </div>
+    </div>
+  </div>
+  <div class="form-box">
+    <h2 class="section-title" data-en="Send Wholesale Inquiry" data-fr="Envoyer une Demande de Gros"></h2>
+    <input type="text" placeholder="Your Full Name / Votre nom complet">
+    <input type="text" placeholder="Interested Products / Produits intéressés">
+    <input type="text" placeholder="Quantity & Country / Quantité & Pays">
+    <input type="text" placeholder="Your WhatsApp Number">
+    <textarea rows="4" placeholder="Remark: MOQ, shipping, packaging... / Remarque"></textarea>
+    <button data-en="Submit Now" data-fr="Soumettre maintenant"></button>
+  </div>
+</div>
+
+<div class="tab-content">
+  <div class="draw-page">
+    <div class="draw-top-text" data-en="Daily Free Lucky Draw! Share to get more chances" data-fr="Tirage quotidien gratuit ! Partagez pour plus de chances"></div>
+
+    <div class="chance-box">
+      <p data-en="Your Remaining Draw Chance" data-fr="Vos chances restantes"></p>
+      <div class="chance-num" id="chanceCount">1</div>
+      <p data-en="Chances" data-fr="Chances"></p>
+    </div>
+
+    <div class="wheel-box">
+      <div class="arrow"></div>
+      <div class="wheel" id="wheel"></div>
+      <div class="wheel-center" data-en="START" data-fr="DÉBUT"></div>
+    </div>
+
+    <button class="draw-btn" id="drawBtn" data-en="Start Lucky Draw" data-fr="Commencer le tirage"></button>
+    <br>
+    <button class="share-btn" id="shareBtn" data-en="Share & Get +1 Chance" data-fr="Partager +1 Chance"></button>
+  </div>
+</div>
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <h3 id="popTitle">Congratulations!</h3>
+    <p id="popText">You won the prize!</p>
+    <button class="popup-close" onclick="closePop()">OK</button>
+  </div>
+</div>
+
+<div class="whatsapp-float">
+    <a href="https://wa.me/8618069950755" target="_blank">💬</a>
+</div>
+
 <script>
-// 初始化语言 - 自动识别浏览器语言
+function switchTab(index){
+    const tabs = document.querySelectorAll('.tab-content');
+    const btns = document.querySelectorAll('.tab-btn');
+    tabs.forEach((item,i)=>{
+        item.classList.remove('show');
+        btns[i].classList.remove('active');
+    });
+    tabs[index].classList.add('show');
+    btns[index].classList.add('active');
+}
+
 let currentLang = navigator.language || navigator.userLanguage;
 let lang = currentLang.startsWith('fr') ? 'fr' : 'en';
 
-// 应用语言到页面
 function initLang(lang) {
-  // 遍历所有带有多语言属性的元素
   document.querySelectorAll('[data-en]').forEach(el => {
     el.textContent = el.getAttribute(`data-${lang}`);
   });
-  // 设置页面根语言属性
   document.querySelector('html').setAttribute('lang', lang);
-  // 更新切换按钮显示
   document.querySelector('.lang-switch').textContent = lang === 'fr' ? 'FR / EN' : 'EN / FR';
 }
-
-// 切换语言按钮点击事件
 function toggleLang() {
   lang = lang === 'en' ? 'fr' : 'en';
   initLang(lang);
 }
-
-// 页面加载时初始化语言
 initLang(lang);
+
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+let musicPlay = false;
+document.body.addEventListener('click',()=>{
+  if(!musicPlay){
+    bgMusic.volume = 0.3;
+    bgMusic.play();
+    musicPlay = true;
+    musicBtn.innerText = '🔊';
+  }
+})
+musicBtn.onclick = function(){
+  if(bgMusic.paused){bgMusic.play();this.innerText='🔊'}
+  else{bgMusic.pause();this.innerText='🔇'}
+}
+
+// 概率：大奖10%  中等20%(免服务费+折扣)  普通70%
+let chance = 1;
+let isDrawing = false;
+const wheel = document.getElementById('wheel');
+const chanceDom = document.getElementById('chanceCount');
+const drawBtn = document.getElementById('drawBtn');
+const shareBtn = document.getElementById('shareBtn');
+const popup = document.getElementById('popup');
+const popTitle = document.getElementById('popTitle');
+const popText = document.getElementById('popText');
+
+// 已改成：免服务费
+const prizeListEn = [
+  "Service Fee Waiver",
+  "5% Wholesale Discount",
+  "Free Product Sample",
+  "Agent Exclusive Price",
+  "$10 Store Credit",
+  "Priority Shipping Service"
+];
+const prizeListFr = [
+  "Frais de service gratuit",
+  "Remise Gros 5%",
+  "Échantillon Gratuit",
+  "Prix Exclusif Agent",
+  "Crédit Boutique 10$",
+  "Service Livraison Prioritaire"
+];
+const angleArr = [30,90,150,210,270,330];
+
+function getRandomPrizeIndex(){
+  let r = Math.random() * 100;
+  // 大奖 10%
+  if(r < 10){
+    return [2,4][Math.floor(Math.random()*2)];
+  }
+  // 中等：免服务费 + 折扣 20%
+  else if(r >= 10 && r < 30){
+    return [0,1][Math.floor(Math.random()*2)];
+  }
+  // 普通安慰奖 70%
+  else{
+    return [3,5][Math.floor(Math.random()*2)];
+  }
+}
+
+drawBtn.onclick = function(){
+  if(isDrawing)return;
+  if(chance <= 0){
+    if(lang==='en')alert("No chance left! Please share to get more.")
+    else alert("Plus de chance ! Partagez pour en obtenir.")
+    return;
+  }
+  isDrawing = true;
+  chance--;
+  chanceDom.innerText = chance;
+
+  let randomIndex = getRandomPrizeIndex();
+  let targetAngle = 1800 + angleArr[randomIndex];
+  wheel.style.transform = `rotate(${targetAngle}deg)`;
+
+  setTimeout(()=>{
+    isDrawing = false;
+    let prize = lang==='en' ? prizeListEn[randomIndex] : prizeListFr[randomIndex];
+    if(lang==='en'){
+      popTitle.innerText = "🎉 Congratulations!";
+      popText.innerText = "You won: " + prize;
+    }else{
+      popTitle.innerText = "🎉 Félicitations !";
+      popText.innerText = "Vous avez gagné : " + prize;
+    }
+    popup.style.display = "flex";
+  },4000)
+}
+
+shareBtn.onclick = function(){
+  chance += 1;
+  chanceDom.innerText = chance;
+  if(lang==='en')alert("✅ Share success! You get +1 draw chance")
+  else alert("✅ Partage réussi ! +1 chance obtenue")
+}
+
+function closePop(){
+  popup.style.display = "none";
+}
 </script>
 
 </body>
