@@ -16,6 +16,8 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 .share-btn{display:inline-block;padding:10px 16px;border-radius:8px;color:#fff;text-decoration:none;margin:0 6px;font-weight:bold;}
 .share-wa{background:#25D366;}
 .share-fb{background:#1877F2;}
+.share-ins{background:#C13584;}
+.share-yt{background:#FF0000;}
 
 .tab-nav{max-width:800px;margin:0 auto 20px;display:flex;gap:10px;}
 .tab-btn{flex:1;padding:14px;border:none;border-radius:12px 12px 0 0;background:#dee2e6;font-size:16px;font-weight:bold;cursor:pointer;transition:0.3s;}
@@ -58,6 +60,10 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 .form-box button{width:100%;padding:13px;background:#007bbd;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:8px;transition:0.3s;}
 .form-box button:hover{opacity:0.9;}
 
+.social-feed{padding:25px 22px;background:#fdfdfd;}
+.embed-wrap{max-width:100%;margin:15px 0;}
+.embed-wrap iframe{width:100%;border-radius:12px;border:none;}
+
 .whatsapp-float{position:fixed;right:20px;bottom:20px;background:#25D366;border-radius:50%;width:55px;height:55px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px #0003;z-index:999;}
 .whatsapp-float a{color:#fff;font-size:26px;text-decoration:none;}
 
@@ -74,13 +80,16 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 <body>
 
 <div class="top-share-bar">
-    <a class="share-btn share-wa" id="shareWA" href="javascript:;">📱 Share on WhatsApp</a>
-    <a class="share-btn share-fb" id="shareFB" href="javascript:;">📘 Share on Facebook</a>
+    <a class="share-btn share-wa" id="shareWA" href="javascript:;">📱 Share</a>
+    <a class="share-btn share-fb" id="shareFB" href="javascript:;">📘 Facebook</a>
+    <a class="share-btn share-ins" href="https://instagram.com/lina_easthopemart" target="_blank">📸 Instagram</a>
+    <a class="share-btn share-yt" href="https://www.youtube.com/@EasthopemartBusiness" target="_blank">▶ YouTube</a>
 </div>
 
 <div class="tab-nav">
     <button class="tab-btn active" onclick="switchTab(0)">Agent Program</button>
     <button class="tab-btn" onclick="switchTab(1)">Products & Inquiry</button>
+    <button class="tab-btn" onclick="switchTab(2)">Social Media</button>
 </div>
 
 <div class="wrap">
@@ -97,7 +106,7 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
         <h2 data-en="Who We Support" data-fr="Qui Nous Soutenons"></h2>
         <p data-en="✔ Africa small sellers & resellers" data-fr="✔ Petits vendeurs et revendeurs en Afrique"></p>
         <p data-en="✔ WhatsApp business owners" data-fr="✔ Propriétaires de business WhatsApp"></p>
-        <p data-en="✔ Housewife / Student / Part-time agent" data-fr="✔ Femmes au foyer / Étudiants / Agents à temps partiel"></p>
+        <p data-en="✔ Housewife / Student / Part-time agent" data-fr="✔ Femme au foyer / Étudiant / Agent à temps partiel"></p>
         <p data-en="✔ Nigeria / Ghana / West Africa buyers" data-fr="✔ Acheteurs du Nigeria / Ghana / Afrique de l'Ouest"></p>
       </div>
 
@@ -114,19 +123,19 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
         <h2 data-en="Agent Profit Mode" data-fr="Mode de Profit de l'Agent"></h2>
         <div class="highlight" data-en="NO STOCK • NO BIG INVESTMENT • ZERO RISK" data-fr="SANS STOCK • SANS GROS INVESTISSEMENT • RISQUE ZÉRO"></div>
         <p data-en="You share products & take local orders" data-fr="Vous partagez les produits & prenez les commandes locales"></p>
-        <p data-en="We source, pack and ship from China" data-fr="Nous achetons, emballons et expédions depuis la Chine"></p>
-        <p data-en="You earn stable high profit from every order" data-fr="Vous gagnez un profit stable et élevé sur chaque commande"></p>
+        <p data-en="We source, pack and ship from China" data-fr="Nous approvisionnons, emballons et expédions depuis la Chine"></p>
+        <p data-en="You earn stable high profit from every order" data-fr="Vous gagnez un profit élevé et stable sur chaque commande"></p>
       </div>
 
       <div class="box">
         <h2 data-en="Hot Selling Categories" data-fr="Catégories de Produits Populaires"></h2>
         <div class="flex-row">
-          <div class="flex-item" data-en="Solar Energy System" data-fr="Système Énergie Solaire"></div>
-          <div class="flex-item" data-en="Hair & Beauty Items" data-fr="Articles Cheveux & Beauté"></div>
+          <div class="flex-item" data-en="Solar Energy System" data-fr="Système d'Énergie Solaire"></div>
+          <div class="flex-item" data-en="Hair & Beauty Items" data-fr="Articles de Coiffure & Beauté"></div>
         </div>
         <div class="flex-row">
-          <div class="flex-item" data-en="Phone & Gadget Accessories" data-fr="Accessoires Téléphones & Gadgets"></div>
-          <div class="flex-item" data-en="Home & Kitchen Appliances" data-fr="Appareils Électroménagers"></div>
+          <div class="flex-item" data-en="Phone & Gadget Accessories" data-fr="Accessoires Téléphone & Gadget"></div>
+          <div class="flex-item" data-en="Home & Kitchen Appliances" data-fr="Appareils Domestiques & Cuisine"></div>
         </div>
       </div>
 
@@ -134,12 +143,12 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
         <h2 data-en="Why Choose easthopemart.ng" data-fr="Pourquoi Choisir easthopemart.ng"></h2>
         <p data-en="✔ Verified official Nigeria shopping platform" data-fr="✔ Plateforme de shopping officielle vérifiée au Nigeria"></p>
         <p data-en="✔ Low MOQ & friendly trial order support" data-fr="✔ MOQ bas & support de commande d'essai convivial"></p>
-        <p data-en="✔ 100% original China factory low price" data-fr="✔ Prix bas direct usine Chine 100% original"></p>
+        <p data-en="✔ 100% original China factory low price" data-fr="✔ Prix bas d'usine Chine 100% original"></p>
         <p data-en="✔ Stable shipping to Lagos & all Nigeria" data-fr="✔ Expédition stable vers Lagos & tout le Nigeria"></p>
         <p data-en="✔ Long-term exclusive agent discount" data-fr="✔ Remise agent exclusive à long terme"></p>
       </div>
 
-      <div class="cta" data-en="Start Your Profitable Africa Business Today" data-fr="Démarrez Votre Business Rentable en Afrique Aujourd'hui"></div>
+      <div class="cta" data-en="Start Your Profitable Africa Business Today" data-fr="Lancez Votre Business Rentable en Afrique Aujourd'hui"></div>
 
       <div class="contact">
         <p data-en="Get Full Catalog & Exclusive Agent Price" data-fr="Obtenez le Catalogue Complet & le Prix Agent Exclusif"></p>
@@ -174,7 +183,7 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
                 </div>
                 <div class="product-card" onclick="fillProduct('Home Ice Maker / Machine à glace domestique')">
                     <h3 data-en="Home Ice Maker" data-fr="Machine à glace domestique"></h3>
-                    <div class="price" data-en="Hot Item" data-fr="Article chaud"></div>
+                    <div class="price" data-en="Hot Item" data-fr="Article populaire"></div>
                     <p data-en="Fast delivery" data-fr="Livraison rapide"></p>
                 </div>
                 <div class="product-card" onclick="fillProduct('Projector Lamp / Lampe projecteur')">
@@ -199,14 +208,34 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
             <button onclick="submitInquiry()" data-en="Submit Inquiry" data-fr="Soumettre la demande">Submit Inquiry</button>
         </div>
     </div>
+
+    <div class="tab-content">
+        <div class="social-feed">
+            <h2 class="section-title" data-en="Follow Our Social Media" data-fr="Suivez nos réseaux sociaux"></h2>
+
+            <div class="embed-wrap">
+                <h3 style="font-size:16px;color:#C13584;margin-bottom:10px;" data-en="Instagram Official Account" data-fr="Compte officiel Instagram"></h3>
+                <p style="margin-bottom:10px" data-en="Check our latest posts & reels" data-fr="Découvrez nos dernières publications et reels"></p>
+                <a href="https://instagram.com/lina_easthopemart" target="_blank" class="share-btn share-ins" style="display:block;margin:0 auto;width:fit-content;">
+                    @lina_easthopemart
+                </a>
+            </div>
+
+            <div class="embed-wrap">
+                <h3 style="font-size:16px;color:#FF0000;margin-bottom:10px;" data-en="YouTube Official Channel" data-fr="Chaîne officielle YouTube"></h3>
+                <p style="margin-bottom:10px" data-en="Watch our business & product videos" data-fr="Regardez nos vidéos commerciales et produits"></p>
+                <a href="https://www.youtube.com/@EasthopemartBusiness" target="_blank" class="share-btn share-yt" style="display:block;margin:0 auto;width:fit-content;">
+                    Easthopemart Business
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- 悬浮WhatsApp按钮 -->
 <div class="whatsapp-float">
     <a href="https://wa.me/8618069950755" target="_blank">💬</a>
 </div>
 
-<!-- 3秒WhatsApp弹窗 + API展示 + 关闭永久隐藏 -->
 <div class="popup-mask" id="waPopup">
     <div class="popup-box">
         <h3>WhatsApp</h3>
@@ -216,9 +245,9 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
             Loading API data...
         </div>
 
-        <a class="popup-close" href="https://wa.me/8618069950755" target="_blank">WhatsApp Now</a>
+        <a class="popup-close" href="https://wa.me/8618069950755" target="_blank" data-en="WhatsApp Now" data-fr="WhatsApp Maintenant">WhatsApp Now</a>
         <br><br>
-        <button class="popup-close" onclick="closePopup()">Close</button>
+        <button class="popup-close" onclick="closePopup()" data-en="Close" data-fr="Fermer">Close</button>
     </div>
 </div>
 
@@ -227,10 +256,6 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 </div>
 
 <script>
-// 清除旧记录，方便你测试弹窗（用完可以删掉）
-localStorage.removeItem("popOff");
-
-// 双标签切换
 function switchTab(idx){
     const tabs = document.querySelectorAll('.tab-content');
     const btns = document.querySelectorAll('.tab-btn');
@@ -242,10 +267,17 @@ function switchTab(idx){
     btns[idx].classList.add('active');
 }
 
-// 英法双语一键切换
 let isEN = true;
-function toggleLang(){
-    isEN = !isEN;
+const userLang = localStorage.getItem("siteLang");
+
+if(userLang){
+    isEN = userLang === "en";
+}else{
+    const sysLang = navigator.language || navigator.userLanguage || "";
+    isEN = !sysLang.toLowerCase().startsWith("fr");
+}
+
+function renderLang(){
     document.querySelectorAll('[data-en]').forEach(el=>{
         el.innerText = isEN ? el.dataset.en : el.dataset.fr;
     });
@@ -253,9 +285,15 @@ function toggleLang(){
         el.placeholder = isEN ? el.dataset.placeholderEn : el.dataset.placeholderFr;
     });
 }
-toggleLang();
 
-// 产品点击自动带入双语招商话术
+function toggleLang(){
+    isEN = !isEN;
+    localStorage.setItem("siteLang", isEN ? "en" : "fr");
+    renderLang();
+}
+
+renderLang();
+
 function fillProduct(pName){
     switchTab(1);
     if(isEN){
@@ -269,7 +307,6 @@ Je souhaite connaître le prix d'usine détaillé, la quantité minimale de comm
     }
 }
 
-// 表单提交自动打开WhatsApp并预填信息
 const MY_WA_NUMBER = "8618069950755";
 
 function submitInquiry(){
@@ -328,7 +365,6 @@ function showTip(text){
     setTimeout(()=>tip.style.display="none",2000);
 }
 
-// 调用API并显示在弹窗
 function fetchEastApi(){
   fetch("https://easthopemart.ng/api")
   .then(res => res.json())
@@ -342,19 +378,16 @@ function fetchEastApi(){
   });
 }
 
-// ========== 重点修复：页面载入【强制3秒弹出】弹窗 ==========
 setTimeout(function(){
     document.getElementById("waPopup").style.display = "flex";
     fetchEastApi();
 }, 3000);
 
-// 关闭后永久隐藏
 function closePopup(){
     document.getElementById("waPopup").style.display="none";
     localStorage.setItem("popOff","1");
 }
 
-// 顶部分享
 const pageUrl = "https://easthopemart.ng";
 const shareTextEN = "Become Africa exclusive agent + China wholesale high quality goods, low investment high profit 🚀";
 const shareTextFR = "Devenez agent exclusif Afrique + produits de gros Chine haute qualité, faible investissement haut bénéfice 🚀";
