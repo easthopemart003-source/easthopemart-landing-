@@ -64,28 +64,26 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 .popup-mask{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:9999;}
 .popup-box{background:#fff;width:85%;max-width:360px;border-radius:16px;padding:30px 20px;text-align:center;}
 .popup-box h3{color:#25D366;font-size:20px;margin-bottom:15px;}
-.popup-box p{color:#555;margin-bottom:20px;line-height:1.6;}
-.popup-close{padding:10px 24px;background:#25D366;color:#fff;border:none;border-radius:8px;font-size:15px;cursor:pointer;}
+.popup-box p{color:#555;margin-bottom:10px;line-height:1.6;}
+.api-data-wrap{background:#f6f6f6;padding:10px;border-radius:8px;margin:15px 0;text-align:left;font-size:12px;color:#333;max-height:120px;overflow:auto;white-space:pre-wrap;}
+.popup-close{padding:10px 24px;background:#25D366;color:#fff;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:8px;}
 
 .msg-tip{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:30px;border-radius:12px;z-index:10000;display:none;text-align:center;box-shadow:0 0 20px #0002;}
 </style>
 </head>
 <body>
 
-<!-- 顶部真实分享按钮 -->
 <div class="top-share-bar">
     <a class="share-btn share-wa" id="shareWA" href="javascript:;">📱 Share on WhatsApp</a>
     <a class="share-btn share-fb" id="shareFB" href="javascript:;">📘 Share on Facebook</a>
 </div>
 
-<!-- 双标签导航 -->
 <div class="tab-nav">
     <button class="tab-btn active" onclick="switchTab(0)">Agent Program</button>
     <button class="tab-btn" onclick="switchTab(1)">Products & Inquiry</button>
 </div>
 
 <div class="wrap">
-    <!-- 代理招商页面 -->
     <div class="tab-content show">
       <div class="lang-switch" onclick="toggleLang()">FR / EN</div>
 
@@ -155,7 +153,6 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
       </div>
     </div>
 
-    <!-- 产品询价页面 -->
     <div class="tab-content">
         <div class="section">
             <h2 class="section-title" data-en="Our Wholesale Products" data-fr="Nos Produits de Gros"></h2>
@@ -209,23 +206,30 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
     <a href="https://wa.me/8618069950755" target="_blank">💬</a>
 </div>
 
-<!-- 进入网站3秒自动WhatsApp弹窗 + 植入 easthopemart.ng API -->
+<!-- 3秒WhatsApp弹窗 + API展示 + 关闭永久隐藏 -->
 <div class="popup-mask" id="waPopup">
     <div class="popup-box">
         <h3>WhatsApp</h3>
         <p data-en="Contact us now for factory price and agent cooperation!" data-fr="Contactez-nous maintenant pour le prix d'usine et la coopération agent !"></p>
+        
+        <div class="api-data-wrap" id="apiShowData">
+            Loading API data...
+        </div>
+
         <a class="popup-close" href="https://wa.me/8618069950755" target="_blank">WhatsApp Now</a>
         <br><br>
         <button class="popup-close" onclick="closePopup()">Close</button>
     </div>
 </div>
 
-<!-- 提交跳转提示弹窗 -->
 <div class="msg-tip" id="msgTip">
     <p id="msgTipText"></p>
 </div>
 
 <script>
+// 清除旧记录，方便你测试弹窗（用完可以删掉）
+localStorage.removeItem("popOff");
+
 // 双标签切换
 function switchTab(idx){
     const tabs = document.querySelectorAll('.tab-content');
@@ -251,7 +255,7 @@ function toggleLang(){
 }
 toggleLang();
 
-// 产品点击自动带入【高级外贸招商双语话术】
+// 产品点击自动带入双语招商话术
 function fillProduct(pName){
     switchTab(1);
     if(isEN){
@@ -265,7 +269,7 @@ Je souhaite connaître le prix d'usine détaillé, la quantité minimale de comm
     }
 }
 
-// ========== 核心：表单提交 → 自动打开WhatsApp + 预填完整信息 ==========
+// 表单提交自动打开WhatsApp并预填信息
 const MY_WA_NUMBER = "8618069950755";
 
 function submitInquiry(){
@@ -274,13 +278,11 @@ function submitInquiry(){
     let phone = document.getElementById("userPhone").value.trim();
     let msg = document.getElementById("userMsg").value.trim();
 
-    // 非空校验
     if(!name || !country || !phone){
         showTip(isEN ? "Please fill in Name / Country / Phone" : "Veuillez remplir Nom / Pays / Téléphone");
         return;
     }
 
-    // WhatsApp预填精美排版内容
     let content;
     if(isEN){
         content = 
@@ -308,13 +310,11 @@ ${msg}
 =============================`;
     }
 
-    // 自动唤起WhatsApp，输入框预填完毕
     let waUrl = "https://wa.me/" + MY_WA_NUMBER + "?text=" + encodeURIComponent(content);
     window.open(waUrl, "_blank");
 
     showTip(isEN ? "Opening WhatsApp automatically..." : "Ouverture automatique de WhatsApp...");
 
-    // 清空表单
     document.getElementById("userName").value = "";
     document.getElementById("userCountry").value = "";
     document.getElementById("userPhone").value = "";
@@ -328,32 +328,33 @@ function showTip(text){
     setTimeout(()=>tip.style.display="none",2000);
 }
 
-// ========== 弹窗弹出时 调用 easthopemart.ng 官网API接口 ==========
+// 调用API并显示在弹窗
 function fetchEastApi(){
   fetch("https://easthopemart.ng/api")
   .then(res => res.json())
   .then(resData => {
-    console.log("✅ easthopemart.ng API 成功返回：", resData);
+    console.log("✅ API成功返回：", resData);
+    document.getElementById("apiShowData").innerText = JSON.stringify(resData, null, 2);
   })
   .catch(err => {
-    console.log("❌ API 请求异常（跨域或接口限制）：", err);
+    console.log("❌ API请求异常：", err);
+    document.getElementById("apiShowData").innerText = "API Load Failed / CORS Error";
   });
 }
 
-// 进入页面3秒自动弹窗 + 调用API，关闭永久不再弹出
-if(!localStorage.getItem("popOff")){
-    setTimeout(()=>{
-        document.getElementById("waPopup").style.display="flex";
-        // 弹窗出现同时执行API
-        fetchEastApi();
-    },3000);
-}
+// ========== 重点修复：页面载入【强制3秒弹出】弹窗 ==========
+setTimeout(function(){
+    document.getElementById("waPopup").style.display = "flex";
+    fetchEastApi();
+}, 3000);
+
+// 关闭后永久隐藏
 function closePopup(){
     document.getElementById("waPopup").style.display="none";
     localStorage.setItem("popOff","1");
 }
 
-// 顶部真实WhatsApp + Facebook双语分享转发
+// 顶部分享
 const pageUrl = "https://easthopemart.ng";
 const shareTextEN = "Become Africa exclusive agent + China wholesale high quality goods, low investment high profit 🚀";
 const shareTextFR = "Devenez agent exclusif Afrique + produits de gros Chine haute qualité, faible investissement haut bénéfice 🚀";
