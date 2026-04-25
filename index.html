@@ -62,7 +62,22 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 
 .social-feed{padding:25px 22px;background:#fdfdfd;}
 .embed-wrap{max-width:100%;margin:20px 0;}
-.embed-wrap iframe{width:100%;border-radius:16px;border:none;aspect-ratio:16/9;}
+/* 修复：YouTube 自适应容器 */
+.yt-container{
+  position:relative;
+  width:100%;
+  padding-top:56.25%; /* 16:9 */
+  overflow:hidden;
+  border-radius:16px;
+}
+.yt-container iframe{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border:none;
+}
 .embed-wrap .ins-frame{aspect-ratio:9/16;max-height:500px;}
 
 .whatsapp-float{position:fixed;right:20px;bottom:20px;background:#25D366;border-radius:50%;width:55px;height:55px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px #0003;z-index:999;}
@@ -408,14 +423,22 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
         </div>
     </div>
 
-    <!-- 【已修复】社交媒体页面 + Instagram内嵌视频完整恢复 -->
+    <!-- 【已修复】社交媒体页面 + Instagram内嵌视频完整恢复 + YouTube修复 -->
     <div class="tab-content">
         <div class="social-feed">
             <h2 class="section-title" data-en="Our Social Media" data-fr="Nos Réseaux Sociaux"></h2>
 
             <div class="embed-wrap">
                 <h3 style="color:#FF0000;margin-bottom:10px;">▶ YouTube Video</h3>
-                <iframe src="https://www.youtube-nocookie.com/embed/dzuYCsy_PlQ" allowfullscreen></iframe>
+                <!-- 修复：官方标准代码 + 自适应容器 -->
+                <div class="yt-container">
+                    <iframe src="https://www.youtube-nocookie.com/embed/dzuYCsy_PlQ" 
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen></iframe>
+                </div>
             </div>
 
             <!-- Instagram 官方内嵌完整版 已修复 -->
@@ -765,6 +788,4 @@ updateChanceCount();
 </script>
 
 </body>
-</html>
-
 </html>
