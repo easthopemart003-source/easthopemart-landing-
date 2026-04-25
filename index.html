@@ -19,8 +19,8 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 .share-ins{background:#C13584;}
 .share-yt{background:#FF0000;}
 
-.tab-nav{max-width:800px;margin:0 auto 20px;display:flex;gap:10px;}
-.tab-btn{flex:1;padding:14px;border:none;border-radius:12px 12px 0 0;background:#dee2e6;font-size:16px;font-weight:bold;cursor:pointer;transition:0.3s;}
+.tab-nav{max-width:800px;margin:0 auto 20px;display:flex;gap:10px;flex-wrap:wrap;}
+.tab-btn{flex:1;padding:14px;border:none;border-radius:12px 12px 0 0;background:#dee2e6;font-size:15px;font-weight:bold;cursor:pointer;transition:0.3s;white-space:nowrap;}
 .tab-btn.active{background:#007bbd;color:#fff;}
 
 .wrap{max-width:800px;margin:0 auto;}
@@ -36,8 +36,8 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 .box h2::before{content:"✅";margin-right:10px;}
 .box p{color:#333;font-size:15px;margin-bottom:10px;}
 .highlight{background:#fff2e6;color:#d97706;padding:12px;border-radius:10px;font-weight:bold;margin:14px 0;font-size:15px;}
-.flex-row{display:flex;gap:12px;margin:16px 0;}
-.flex-item{flex:1;background:#f0f7ff;padding:14px;border-radius:12px;text-align:center;font-size:14px;font-weight:500;}
+.flex-row{display:flex;gap:12px;margin:16px 0;flex-wrap:wrap;}
+.flex-item{flex:1;background:#f0f7ff;padding:14px;border-radius:12px;text-align:center;font-size:14px;font-weight:500;min-width:45%;}
 .cta{background:#22c55e;color:#fff;text-align:center;padding:20px;font-size:17px;font-weight:bold;}
 .contact{background:#111827;color:#fff;text-align:center;padding:20px;font-size:15px;}
 .whatsapp-btn{display:block;background:#25D366;color:#fff;text-decoration:none;padding:14px;border-radius:12px;text-align:center;font-weight:bold;font-size:16px;margin-top:12px;border:0;cursor:pointer;}
@@ -76,6 +76,201 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 .popup-close{padding:10px 24px;background:#25D366;color:#fff;border:none;border-radius:8px;font-size:15px;cursor:pointer;margin-top:8px;}
 
 .msg-tip{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:30px;border-radius:12px;z-index:10000;display:none;text-align:center;box-shadow:0 0 20px #0002;}
+
+/* ===================== 拼多多大转盘 专属样式 ===================== */
+.pdd-lucky-container{
+  background: linear-gradient(180deg,#F82B2B,#FF5050);
+  padding:20px 15px;
+  min-height:100vh;
+}
+.pdd-title{
+  text-align:center;
+  color:#fff;
+  font-size:22px;
+  font-weight:bold;
+  text-shadow:0 1px 3px #0003;
+  margin-bottom:15px;
+}
+.pdd-chance-box{
+  background:#fff;
+  border-radius:30px;
+  text-align:center;
+  padding:8px 15px;
+  margin:0 auto 20px;
+  width:fit-content;
+  font-size:15px;
+}
+.pdd-chance-num{
+  color:#F82B2B;
+  font-weight:bold;
+  font-size:18px;
+}
+
+/* 转盘外层边框 */
+.pdd-wheel-wrap{
+  position:relative;
+  width:92%;
+  max-width:320px;
+  margin:0 auto;
+}
+.pdd-wheel-border{
+  background:linear-gradient(45deg,#FFD22E,#FF9500);
+  border-radius:50%;
+  padding:8px;
+}
+.pdd-wheel{
+  width:100%;
+  padding-bottom:100%;
+  border-radius:50%;
+  position:relative;
+  overflow:hidden;
+  background:#fff;
+}
+
+/* 8个奖品扇形分区 + 文字 */
+.wheel-item{
+  position:absolute;
+  width:50%;
+  height:50%;
+  top:0;
+  left:50%;
+  transform-origin:bottom left;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px;
+}
+.wheel-item span{
+  writing-mode:vertical-rl;
+  font-size:12px;
+  font-weight:bold;
+  color:#fff;
+  text-align:center;
+}
+
+/* 指针 + 中心按钮 */
+.pdd-pointer{
+  position:absolute;
+  left:50%;
+  top:0;
+  transform:translateX(-50%);
+  width:0;
+  height:0;
+  border-left:12px solid transparent;
+  border-right:12px solid transparent;
+  border-top:22px solid #F82B2B;
+  z-index:3;
+}
+.pdd-wheel-center{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:80px;
+  height:80px;
+  background:linear-gradient(180deg,#F82B2B,#D91E1E);
+  border-radius:50%;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-weight:bold;
+  box-shadow:0 3px 10px #0003;
+  cursor:pointer;
+}
+
+/* 分享按钮 */
+.pdd-share-box{margin-top:25px;}
+.pdd-share-title{
+  text-align:center;
+  color:#fff;
+  font-size:16px;
+  margin-bottom:15px;
+}
+.pdd-share-btns{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+.pdd-share-wa{
+  background:#25D366;
+  color:#fff;
+  border:none;
+  padding:12px 18px;
+  border-radius:8px;
+  font-weight:bold;
+  font-size:15px;
+}
+.pdd-share-fb{
+  background:#1877F2;
+  color:#fff;
+  border:none;
+  padding:12px 18px;
+  border-radius:8px;
+  font-weight:bold;
+  font-size:15px;
+}
+
+/* 中奖红包弹窗 */
+.pdd-result-mask{
+  position:fixed;
+  left:0;top:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.6);
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+}
+.pdd-result-box{
+  width:80%;
+  max-width:300px;
+  background:#fff;
+  border-radius:16px;
+  text-align:center;
+  overflow:hidden;
+}
+.pdd-result-head{
+  background:linear-gradient(90deg,#F82B2B,#FF5050);
+  color:#fff;
+  padding:15px;
+  font-size:18px;
+  font-weight:bold;
+}
+.pdd-result-body{padding:20px;font-size:15px;}
+.pdd-result-btn{
+  background:#F82B2B;
+  color:#fff;
+  border:none;
+  width:90%;
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:15px;
+  font-weight:bold;
+}
+
+/* 转盘旋转动画 已调慢舒服速度 */
+@keyframes wheelRotate{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(1440deg);}
+}
+.wheel-rotating{
+  animation: wheelRotate 5s cubic-bezier(0.17,0.67,0.13,0.99) forwards;
+}
+
+/* 礼花中奖特效 */
+.firework {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100000;
+  border-radius: 50%;
+  animation: fireAni 1.2s ease-out forwards;
+}
+@keyframes fireAni {
+  0% {transform: scale(0); opacity:1;}
+  100% {transform: scale(2); opacity:0;}
+}
 </style>
 </head>
 <body>
@@ -91,6 +286,7 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
     <button class="tab-btn active" onclick="switchTab(0)">Agent Program</button>
     <button class="tab-btn" onclick="switchTab(1)">Products & Inquiry</button>
     <button class="tab-btn" onclick="switchTab(2)">Social Media</button>
+    <button class="tab-btn" onclick="switchTab(3)">Lucky Draw</button>
 </div>
 
 <div class="wrap">
@@ -216,18 +412,89 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 
             <div class="embed-wrap">
                 <h3 style="color:#FF0000;margin-bottom:10px;">▶ YouTube Video</h3>
-                <iframe src="https://www.youtube.com/embed/dzuYCsy_PlQ" allowfullscreen></iframe>
+                <iframe src="https://www.youtube-nocookie.com/embed/dzuYCsy_PlQ" allowfullscreen></iframe>
             </div>
 
-            <div class="embed-wrap">
+            <div class="embed-wrap" style="text-align:center;">
                 <h3 style="color:#C13584;margin-bottom:10px;">📸 Instagram Reels</h3>
-                <iframe class="ins-frame" src="https://www.instagram.com/reel/DXiSrwyDS1d/embed" allowfullscreen></iframe>
+                <p style="margin-bottom:15px;" data-en="Click below to view our latest Reels" data-fr="Cliquez ci-dessous pour voir nos derniers Reels"></p>
+                <a href="https://www.instagram.com/reel/DXiSrwyDS1d/" target="_blank" class="share-btn share-ins" style="display:inline-block;">Open Reel on Instagram</a>
             </div>
 
             <div style="text-align:center;margin-top:20px;">
                 <a href="https://instagram.com/lina_easthopemart" target="_blank" class="share-btn share-ins">Follow @lina_easthopemart</a>
                 <a href="https://www.youtube.com/@EasthopemartBusiness" target="_blank" class="share-btn share-yt">Subscribe YouTube</a>
             </div>
+        </div>
+    </div>
+
+    <!-- 全新：拼多多风格大转盘抽奖 + 8个奖品分区 + 礼花特效 + 优化转速 -->
+    <div class="tab-content">
+        <div class="pdd-lucky-container">
+          <div class="pdd-title" data-en="🎁 Lucky Draw Win Free Samples & Discounts" data-fr="🎁 Tirage au sort: Gagnez des échantillons & réductions">
+            🎁 Lucky Draw Win Free Samples & Discounts
+          </div>
+
+          <div class="pdd-chance-box">
+            <span data-en="Remaining chances：" data-fr="Chances restantes："></span>
+            <span class="pdd-chance-num" id="chanceCount">1</span>
+          </div>
+
+          <div class="pdd-wheel-wrap">
+            <div class="pdd-wheel-border">
+              <div class="pdd-wheel" id="luckWheel">
+                <!-- 8个奖品扇形区域 -->
+                <div class="wheel-item" style="background:#ff4444;transform:rotate(0deg)">
+                    <span>Free $10 Cash</span>
+                </div>
+                <div class="wheel-item" style="background:#ffbb00;transform:rotate(45deg)">
+                    <span>Free Sample</span>
+                </div>
+                <div class="wheel-item" style="background:#ff4444;transform:rotate(90deg)">
+                    <span>15% Discount</span>
+                </div>
+                <div class="wheel-item" style="background:#ffbb00;transform:rotate(135deg)">
+                    <span>No Service Fee</span>
+                </div>
+                <div class="wheel-item" style="background:#ff4444;transform:rotate(180deg)">
+                    <span>5% Coupon</span>
+                </div>
+                <div class="wheel-item" style="background:#ffbb00;transform:rotate(225deg)">
+                    <span>Small Gift</span>
+                </div>
+                <div class="wheel-item" style="background:#ff4444;transform:rotate(270deg)">
+                    <span>Agent Bonus</span>
+                </div>
+                <div class="wheel-item" style="background:#ffbb00;transform:rotate(315deg)">
+                    <span>Surprise Prize</span>
+                </div>
+
+                <div class="pdd-pointer"></div>
+                <div class="pdd-wheel-center" id="drawBtn" onclick="doDraw()" data-en="Draw" data-fr="Tirer">Draw</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pdd-share-box">
+            <div class="pdd-share-title" data-en="Share to get +1 extra chance" data-fr="Partagez pour +1 chance supplémentaire">
+              Share to get +1 extra chance
+            </div>
+            <div class="pdd-share-btns">
+              <button class="pdd-share-wa" onclick="addChance('wa')">📱 Share WhatsApp</button>
+              <button class="pdd-share-fb" onclick="addChance('fb')">📘 Share Facebook</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 中奖红包弹窗 -->
+        <div class="pdd-result-mask" id="luckyResult">
+          <div class="pdd-result-box">
+            <div class="pdd-result-head" id="prizeTitle">Congratulations</div>
+            <div class="pdd-result-body" id="prizeText">You win the prize</div>
+            <a class="pdd-result-btn" href="https://wa.me/8618069950755?text=Hi%2C%20I%20just%20won%20lucky%20draw%20prize!" target="_blank" data-en="Claim Prize on WhatsApp" data-fr="Réclamer le prix sur WhatsApp">Claim Prize on WhatsApp</a>
+            <br>
+            <button style="margin-bottom:15px;padding:6px 16px;border-radius:6px;border:1px solid #ccc;background:#fff;" onclick="closeLuckyResult()" data-en="Close" data-fr="Fermer">Close</button>
+          </div>
         </div>
     </div>
 </div>
@@ -385,6 +652,107 @@ document.getElementById("shareWA").onclick = ()=>{
 document.getElementById("shareFB").onclick = ()=>{
     window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(pageUrl),"_blank");
 };
+
+// ========== 抽奖核心逻辑 + 概率不变 ==========
+let luckyChance = 1;
+let sharedWA = false, sharedFB = false;
+const prizes = [
+    { type:"grand", rate:10, en:"🎉 Grand Prize: Free Sample / $10 Credit", fr:"🎉 Grand Prix: Échantillon Gratuit / Crédit $10" },
+    { type:"medium", rate:20, en:"🎁 Medium Prize: 15% Off / No Service Fee", fr:"🎁 Prix Moyen: 15% de Réduction / Sans Frais de Service" },
+    { type:"small", rate:70, en:"😊 Consolation Prize: 5% Off Coupon", fr:"😊 Prix de consolation: Coupon 5% de réduction" }
+];
+
+function updateChanceCount(){
+    document.getElementById("chanceCount").innerText = luckyChance;
+    let btn = document.getElementById("drawBtn");
+    if(luckyChance <= 0){
+        btn.style.opacity = "0.6";
+        btn.style.pointerEvents = "none";
+        btn.innerText = isEN ? "No Chance" : "Plus de chance";
+    }else{
+        btn.style.opacity = "1";
+        btn.style.pointerEvents = "auto";
+        btn.innerText = isEN ? "Draw" : "Tirer";
+    }
+}
+
+// 中奖礼花特效
+function showFireworks(){
+    for(let i=0;i<20;i++){
+        let fire = document.createElement('div');
+        fire.className = 'firework';
+        fire.style.left = Math.random()*100 + 'vw';
+        fire.style.top = Math.random()*100 + 'vh';
+        fire.style.width = (Math.random()*20+10)+'px';
+        fire.style.height = fire.style.width;
+        fire.style.background = ['#ff2b2b','#ffdd00','#25D366','#1877F2'][Math.floor(Math.random()*4)];
+        document.body.appendChild(fire);
+        setTimeout(()=>fire.remove(),1200);
+    }
+}
+
+function doDraw(){
+    if(luckyChance <= 0) return;
+
+    let wheel = document.getElementById("luckWheel");
+    wheel.classList.add("wheel-rotating");
+
+    luckyChance--;
+    updateChanceCount();
+
+    setTimeout(()=>{
+        wheel.classList.remove("wheel-rotating");
+
+        let rand = Math.random() * 100;
+        let selectedPrize;
+        if(rand < prizes[0].rate){
+            selectedPrize = prizes[0];
+        }else if(rand < prizes[0].rate + prizes[1].rate){
+            selectedPrize = prizes[1];
+        }else{
+            selectedPrize = prizes[2];
+        }
+
+        document.getElementById("prizeTitle").innerText = isEN ? "🎉 Congratulations!" : "🎉 Félicitations !";
+        document.getElementById("prizeText").innerText = isEN ? selectedPrize.en : selectedPrize.fr;
+        document.getElementById("luckyResult").style.display = "flex";
+
+        // 弹出中奖同时放礼花
+        showFireworks();
+
+    },5000);
+}
+
+function addChance(type){
+    if((type==="wa"&&sharedWA) || (type==="fb"&&sharedFB)){
+        showTip(isEN ? "You have shared already!" : "Déjà partagé !");
+        return;
+    }
+    if(luckyChance >= 3){
+        showTip(isEN ? "Max chances reached!" : "Limite atteinte !");
+        return;
+    }
+
+    if(type === "wa"){
+        let text = isEN ? "Join our lucky draw & Africa agent cooperation on easthopemart.ng" : "Rejoignez notre tirage au sort sur easthopemart.ng";
+        window.open("https://wa.me/?text="+encodeURIComponent(text+"\n"+pageUrl),"_blank");
+        sharedWA = true;
+    }else{
+        window.open("https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(pageUrl),"_blank");
+        sharedFB = true;
+    }
+
+    luckyChance++;
+    updateChanceCount();
+    showTip(isEN ? "+1 lucky chance obtained!" : "+1 chance obtenue !");
+}
+
+function closeLuckyResult(){
+    document.getElementById("luckyResult").style.display = "none";
+}
+
+updateChanceCount();
 </script>
+
 </body>
 </html>
