@@ -12,7 +12,6 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
 body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 
-/* 【置顶分享栏】放到最顶部 */
 .top-share-bar{max-width:800px;margin:0 auto 15px;text-align:center;}
 .share-btn{display:inline-block;padding:10px 16px;border-radius:8px;color:#fff;text-decoration:none;margin:0 6px;font-weight:bold;}
 .share-wa{background:#25D366;}
@@ -71,7 +70,6 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 </head>
 <body>
 
-<!-- 【页面最顶端】置顶分享按钮 -->
 <div class="top-share-bar">
     <a class="share-btn share-wa" id="shareWA" href="javascript:;">📱 Share on WhatsApp</a>
     <a class="share-btn share-fb" id="shareFB" href="javascript:;">📘 Share on Facebook</a>
@@ -244,13 +242,23 @@ function toggleLang(){
 }
 toggleLang();
 
-// 点击产品自动填入留言框
+// ========== 高级外贸招商版：点击产品自动带入话术 ==========
 function fillProduct(pName){
     switchTab(1);
-    document.getElementById("userMsg").value = pName + "\nI want price, MOQ and agent terms.";
+    if(isEN){
+        // 英文高级招商文案
+        document.getElementById("userMsg").value = 
+`Interested product: ${pName}
+I want to know detailed factory price, MOQ, shipping cost and exclusive agent cooperation policy for Africa market.`;
+    }else{
+        // 法语高级招商文案
+        document.getElementById("userMsg").value = 
+`Produit intéressé: ${pName}
+Je souhaite connaître le prix d'usine détaillé, la quantité minimale de commande, les frais d'expédition et la politique de coopération d'agent exclusif pour le marché africain.`;
+    }
 }
 
-// 表单提交自动跳转WhatsApp预填消息
+// ========== 表单提交 + WhatsApp 高端精美预填消息 ==========
 const MY_WA_NUMBER = "8618069950755";
 
 function submitInquiry(){
@@ -264,15 +272,39 @@ function submitInquiry(){
         return;
     }
 
-    let content = isEN
-    ? "🌍 New Customer Inquiry from Website\n\nName: " + name + "\nCountry: " + country + "\nContact: " + phone + "\nMessage:\n" + msg
-    : "🌍 Nouvelle demande client site web\n\nNom: " + name + "\nPays: " + country + "\nContact: " + phone + "\nMessage:\n" + msg;
+    let content;
+    if(isEN){
+        content = 
+`=============================
+🌍 OFFICIAL WEBSITE INQUIRY
+=============================
+Customer Name: ${name}
+Country: ${country}
+WhatsApp Contact: ${phone}
+
+Inquiry Content:
+${msg}
+=============================`;
+    }else{
+        content = 
+`=============================
+🌍 DEMANDE DU SITE OFFICIEL
+=============================
+Nom du client: ${name}
+Pays: ${country}
+Contact WhatsApp: ${phone}
+
+Contenu de la demande:
+${msg}
+=============================`;
+    }
 
     let link = "https://wa.me/" + MY_WA_NUMBER + "?text=" + encodeURIComponent(content);
     window.open(link, "_blank");
 
     showTip(isEN ? "Redirecting to WhatsApp..." : "Redirection WhatsApp...");
 
+    // 清空表单
     document.getElementById("userName").value = "";
     document.getElementById("userCountry").value = "";
     document.getElementById("userPhone").value = "";
@@ -286,7 +318,7 @@ function showTip(text){
     setTimeout(()=>tip.style.display="none",2000);
 }
 
-// 3秒弹窗+关闭记忆
+// 3秒弹窗+关闭记忆不再弹出
 if(!localStorage.getItem("popOff")){
     setTimeout(()=>document.getElementById("waPopup").style.display="flex",3000);
 }
@@ -295,10 +327,10 @@ function closePopup(){
     localStorage.setItem("popOff","1");
 }
 
-// 真实转发分享 双语自动切换
+// 顶部真实WhatsApp + Facebook 双语分享转发
 const pageUrl = "https://easthopemart.ng";
-const shareTextEN = "Become Africa agent + China wholesale, low risk high profit 🚀";
-const shareTextFR = "Devenez agent Afrique + gros Chine, faible risque bénéfice élevé 🚀";
+const shareTextEN = "Become Africa exclusive agent + China wholesale high quality goods, low investment high profit 🚀";
+const shareTextFR = "Devenez agent exclusif Afrique + produits de gros Chine haute qualité, faible investissement haut bénéfice 🚀";
 
 document.getElementById("shareWA").onclick = function(){
     let text = isEN ? shareTextEN : shareTextFR;
