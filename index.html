@@ -209,7 +209,7 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
     <a href="https://wa.me/8618069950755" target="_blank">💬</a>
 </div>
 
-<!-- 进入网站3秒自动弹窗 -->
+<!-- 进入网站3秒自动WhatsApp弹窗 + 植入 easthopemart.ng API -->
 <div class="popup-mask" id="waPopup">
     <div class="popup-box">
         <h3>WhatsApp</h3>
@@ -328,9 +328,25 @@ function showTip(text){
     setTimeout(()=>tip.style.display="none",2000);
 }
 
-// 进入页面3秒自动弹窗，关闭后永久不再弹出
+// ========== 弹窗弹出时 调用 easthopemart.ng 官网API接口 ==========
+function fetchEastApi(){
+  fetch("https://easthopemart.ng/api")
+  .then(res => res.json())
+  .then(resData => {
+    console.log("✅ easthopemart.ng API 成功返回：", resData);
+  })
+  .catch(err => {
+    console.log("❌ API 请求异常（跨域或接口限制）：", err);
+  });
+}
+
+// 进入页面3秒自动弹窗 + 调用API，关闭永久不再弹出
 if(!localStorage.getItem("popOff")){
-    setTimeout(()=>document.getElementById("waPopup").style.display="flex",3000);
+    setTimeout(()=>{
+        document.getElementById("waPopup").style.display="flex";
+        // 弹窗出现同时执行API
+        fetchEastApi();
+    },3000);
 }
 function closePopup(){
     document.getElementById("waPopup").style.display="none";
