@@ -61,26 +61,31 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 .whatsapp-float{position:fixed;right:20px;bottom:20px;background:#25D366;border-radius:50%;width:55px;height:55px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px #0003;z-index:999;}
 .whatsapp-float a{color:#fff;font-size:26px;text-decoration:none;}
 
-.popup-mask{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:9999;}
-.popup-box{background:#fff;width:90%;max-width:400px;border-radius:16px;padding:25px;text-align:center;}
-.popup-close{margin-top:12px;padding:10px 20px;border:none;background:#999;color:#fff;border-radius:8px;cursor:pointer;}
+.popup-mask{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:none;align-items:center;justify-content:center;z-index:9999;}
+.popup-box{background:#fff;width:85%;max-width:360px;border-radius:16px;padding:30px 20px;text-align:center;}
+.popup-box h3{color:#25D366;font-size:20px;margin-bottom:15px;}
+.popup-box p{color:#555;margin-bottom:20px;line-height:1.6;}
+.popup-close{padding:10px 24px;background:#25D366;color:#fff;border:none;border-radius:8px;font-size:15px;cursor:pointer;}
 
 .msg-tip{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:30px;border-radius:12px;z-index:10000;display:none;text-align:center;box-shadow:0 0 20px #0002;}
 </style>
 </head>
 <body>
 
+<!-- 顶部真实分享按钮 -->
 <div class="top-share-bar">
     <a class="share-btn share-wa" id="shareWA" href="javascript:;">📱 Share on WhatsApp</a>
     <a class="share-btn share-fb" id="shareFB" href="javascript:;">📘 Share on Facebook</a>
 </div>
 
+<!-- 双标签导航 -->
 <div class="tab-nav">
     <button class="tab-btn active" onclick="switchTab(0)">Agent Program</button>
     <button class="tab-btn" onclick="switchTab(1)">Products & Inquiry</button>
 </div>
 
 <div class="wrap">
+    <!-- 代理招商页面 -->
     <div class="tab-content show">
       <div class="lang-switch" onclick="toggleLang()">FR / EN</div>
 
@@ -144,12 +149,13 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
         <a class="whatsapp-btn" href="https://wa.me/8618069950755" target="_blank" data-en="Chat On WhatsApp Now: +8618069950755" data-fr="Discutez sur WhatsApp Maintenant: +8618069950755"></a>
 
         <div class="qr-code-box">
-          <img src="data:image/png;base64,【在这里粘贴你的二维码Base64编码】" alt="WhatsApp QR Code">
+          <img src="data:image/png;base64,【粘贴你的WhatsApp二维码Base64】" alt="WhatsApp QR Code">
           <p data-en="Scan QR Code to add us on WhatsApp" data-fr="Scannez le QR code pour nous ajouter sur WhatsApp"></p>
         </div>
       </div>
     </div>
 
+    <!-- 产品询价页面 -->
     <div class="tab-content">
         <div class="section">
             <h2 class="section-title" data-en="Our Wholesale Products" data-fr="Nos Produits de Gros"></h2>
@@ -198,26 +204,29 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
     </div>
 </div>
 
+<!-- 悬浮WhatsApp按钮 -->
 <div class="whatsapp-float">
     <a href="https://wa.me/8618069950755" target="_blank">💬</a>
 </div>
 
+<!-- 进入网站3秒自动弹窗 -->
 <div class="popup-mask" id="waPopup">
     <div class="popup-box">
-        <h3 data-en="Need More Info?" data-fr="Besoin de plus d'infos ?"></h3>
-        <p data-en="Contact us on WhatsApp for catalog & agent price" data-fr="Contactez-nous sur WhatsApp pour catalogue et prix agent"></p>
-        <a class="whatsapp-btn" href="https://wa.me/8618069950755" target="_blank">WhatsApp Now</a>
-        <br>
+        <h3>WhatsApp</h3>
+        <p data-en="Contact us now for factory price and agent cooperation!" data-fr="Contactez-nous maintenant pour le prix d'usine et la coopération agent !"></p>
+        <a class="popup-close" href="https://wa.me/8618069950755" target="_blank">WhatsApp Now</a>
+        <br><br>
         <button class="popup-close" onclick="closePopup()">Close</button>
     </div>
 </div>
 
+<!-- 提交跳转提示弹窗 -->
 <div class="msg-tip" id="msgTip">
     <p id="msgTipText"></p>
 </div>
 
 <script>
-// 标签切换
+// 双标签切换
 function switchTab(idx){
     const tabs = document.querySelectorAll('.tab-content');
     const btns = document.querySelectorAll('.tab-btn');
@@ -229,7 +238,7 @@ function switchTab(idx){
     btns[idx].classList.add('active');
 }
 
-// 双语切换
+// 英法双语一键切换
 let isEN = true;
 function toggleLang(){
     isEN = !isEN;
@@ -242,23 +251,21 @@ function toggleLang(){
 }
 toggleLang();
 
-// ========== 高级外贸招商版：点击产品自动带入话术 ==========
+// 产品点击自动带入【高级外贸招商双语话术】
 function fillProduct(pName){
     switchTab(1);
     if(isEN){
-        // 英文高级招商文案
         document.getElementById("userMsg").value = 
 `Interested product: ${pName}
 I want to know detailed factory price, MOQ, shipping cost and exclusive agent cooperation policy for Africa market.`;
     }else{
-        // 法语高级招商文案
         document.getElementById("userMsg").value = 
 `Produit intéressé: ${pName}
 Je souhaite connaître le prix d'usine détaillé, la quantité minimale de commande, les frais d'expédition et la politique de coopération d'agent exclusif pour le marché africain.`;
     }
 }
 
-// ========== 表单提交 + WhatsApp 高端精美预填消息 ==========
+// ========== 核心：表单提交 → 自动打开WhatsApp + 预填完整信息 ==========
 const MY_WA_NUMBER = "8618069950755";
 
 function submitInquiry(){
@@ -267,42 +274,45 @@ function submitInquiry(){
     let phone = document.getElementById("userPhone").value.trim();
     let msg = document.getElementById("userMsg").value.trim();
 
+    // 非空校验
     if(!name || !country || !phone){
-        showTip(isEN ? "Please fill Name / Country / Phone" : "Remplissez Nom / Pays / Téléphone");
+        showTip(isEN ? "Please fill in Name / Country / Phone" : "Veuillez remplir Nom / Pays / Téléphone");
         return;
     }
 
+    // WhatsApp预填精美排版内容
     let content;
     if(isEN){
         content = 
 `=============================
-🌍 OFFICIAL WEBSITE INQUIRY
+🌍 WEBSITE CUSTOMER INQUIRY
 =============================
-Customer Name: ${name}
+Name: ${name}
 Country: ${country}
-WhatsApp Contact: ${phone}
+Contact: ${phone}
 
-Inquiry Content:
+Message:
 ${msg}
 =============================`;
     }else{
         content = 
 `=============================
-🌍 DEMANDE DU SITE OFFICIEL
+🌍 DEMANDE CLIENT SITE WEB
 =============================
-Nom du client: ${name}
+Nom: ${name}
 Pays: ${country}
-Contact WhatsApp: ${phone}
+Contact: ${phone}
 
-Contenu de la demande:
+Message:
 ${msg}
 =============================`;
     }
 
-    let link = "https://wa.me/" + MY_WA_NUMBER + "?text=" + encodeURIComponent(content);
-    window.open(link, "_blank");
+    // 自动唤起WhatsApp，输入框预填完毕
+    let waUrl = "https://wa.me/" + MY_WA_NUMBER + "?text=" + encodeURIComponent(content);
+    window.open(waUrl, "_blank");
 
-    showTip(isEN ? "Redirecting to WhatsApp..." : "Redirection WhatsApp...");
+    showTip(isEN ? "Opening WhatsApp automatically..." : "Ouverture automatique de WhatsApp...");
 
     // 清空表单
     document.getElementById("userName").value = "";
@@ -318,7 +328,7 @@ function showTip(text){
     setTimeout(()=>tip.style.display="none",2000);
 }
 
-// 3秒弹窗+关闭记忆不再弹出
+// 进入页面3秒自动弹窗，关闭后永久不再弹出
 if(!localStorage.getItem("popOff")){
     setTimeout(()=>document.getElementById("waPopup").style.display="flex",3000);
 }
@@ -327,7 +337,7 @@ function closePopup(){
     localStorage.setItem("popOff","1");
 }
 
-// 顶部真实WhatsApp + Facebook 双语分享转发
+// 顶部真实WhatsApp + Facebook双语分享转发
 const pageUrl = "https://easthopemart.ng";
 const shareTextEN = "Become Africa exclusive agent + China wholesale high quality goods, low investment high profit 🚀";
 const shareTextFR = "Devenez agent exclusif Afrique + produits de gros Chine haute qualité, faible investissement haut bénéfice 🚀";
