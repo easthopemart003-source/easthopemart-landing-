@@ -272,6 +272,8 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
   100% {transform: scale(2); opacity:0;}
 }
 </style>
+<!-- Instagram内嵌必须加载JS -->
+<script async src="https://www.instagram.com/embed.js"></script>
 </head>
 <body>
 
@@ -406,6 +408,7 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
         </div>
     </div>
 
+    <!-- 【已修复】社交媒体页面 + Instagram内嵌视频完整恢复 -->
     <div class="tab-content">
         <div class="social-feed">
             <h2 class="section-title" data-en="Our Social Media" data-fr="Nos Réseaux Sociaux"></h2>
@@ -415,10 +418,17 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
                 <iframe src="https://www.youtube-nocookie.com/embed/dzuYCsy_PlQ" allowfullscreen></iframe>
             </div>
 
+            <!-- Instagram 官方内嵌完整版 已修复 -->
             <div class="embed-wrap" style="text-align:center;">
                 <h3 style="color:#C13584;margin-bottom:10px;">📸 Instagram Reels</h3>
-                <p style="margin-bottom:15px;" data-en="Click below to view our latest Reels" data-fr="Cliquez ci-dessous pour voir nos derniers Reels"></p>
-                <a href="https://www.instagram.com/reel/DXiSrwyDS1d/" target="_blank" class="share-btn share-ins" style="display:inline-block;">Open Reel on Instagram</a>
+                <p style="margin-bottom:15px;" data-en="View our latest Instagram Reels below" data-fr="Découvrez nos derniers Reels Instagram ci-dessous"></p>
+                
+                <blockquote class="instagram-media"
+                    data-instgrm-captioned
+                    data-instgrm-permalink="https://www.instagram.com/reel/DXiSrwyDS1d/"
+                    data-instgrm-version="14"
+                    style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin:1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                </blockquote>
             </div>
 
             <div style="text-align:center;margin-top:20px;">
@@ -428,7 +438,7 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
         </div>
     </div>
 
-    <!-- 全新：拼多多风格大转盘抽奖 + 8个奖品分区 + 礼花特效 + 优化转速 -->
+    <!-- 拼多多风格大转盘抽奖 +8个奖品+礼花特效+完整逻辑 -->
     <div class="tab-content">
         <div class="pdd-lucky-container">
           <div class="pdd-title" data-en="🎁 Lucky Draw Win Free Samples & Discounts" data-fr="🎁 Tirage au sort: Gagnez des échantillons & réductions">
@@ -755,4 +765,6 @@ updateChanceCount();
 </script>
 
 </body>
+</html>
+
 </html>
