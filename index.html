@@ -1,21 +1,24 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>easthopemart.ng | Agent & Products & Lucky Draw</title>
+<title>easthopemart.ng | Africa Agent & Products</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
 body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 
-.tab-nav{max-width:800px;margin:0 auto 20px;display:flex;gap:8px;}
-.tab-btn{flex:1;padding:12px;border:none;border-radius:12px 12px 0 0;background:#dee2e6;font-size:14px;font-weight:bold;cursor:pointer;transition:0.3s;}
+/* ========= 顶部标签导航 ========= */
+.tab-nav{max-width:800px;margin:0 auto 20px;display:flex;gap:10px;}
+.tab-btn{flex:1;padding:14px;border:none;border-radius:12px 12px 0 0;background:#dee2e6;font-size:16px;font-weight:bold;cursor:pointer;}
 .tab-btn.active{background:#007bbd;color:#fff;}
 
+/* 页面加宽，不再窄手机版 */
 .wrap{max-width:800px;margin:0 auto;}
 .tab-content{display:none;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 18px #00000018;padding:0;}
 .tab-content.show{display:block;}
 
+/* 原有样式复用 + 加宽适配 */
 .head{background:#007bbd;color:#fff;text-align:center;padding:28px 15px;position:relative;}
 .head h1{font-size:22px;margin-bottom:6px;font-weight:bold;}
 .head p{opacity:0.95;font-size:15px;margin-top:8px;}
@@ -34,194 +37,163 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 .qr-code-box img{width:160px;height:160px;border-radius:12px;}
 .qr-code-box p{font-size:13px;color:#fff;margin-top:8px;opacity:0.9;}
 
+/* 语言切换按钮 */
 .lang-switch{position:absolute;top:15px;right:15px;background:#fff;border-radius:50px;padding:6px 12px;font-size:13px;font-weight:bold;color:#007bbd;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.1);z-index:10;}
 
+/* 产品列表样式 */
 .section{padding:30px 22px;}
 .section-title{text-align:center;font-size:20px;color:#007bbd;font-weight:bold;margin-bottom:25px;}
 .product-wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:15px;}
 .product-card{background:#f8f9fa;padding:15px;border-radius:12px;text-align:center;border:1px solid #eee;}
 .product-card h3{font-size:14px;margin:8px 0;color:#222;}
 .price{color:#25D366;font-weight:bold;font-size:15px;}
+
+/* 询价表单 */
 .form-box{padding:25px 22px;}
 .form-box input,.form-box textarea{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:10px;font-size:14px;}
 .form-box button{width:100%;padding:13px;background:#007bbd;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:8px;}
 
+/* 全局悬浮WhatsApp */
 .whatsapp-float{position:fixed;right:20px;bottom:20px;background:#25D366;border-radius:50%;width:55px;height:55px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px #0003;z-index:999;}
 .whatsapp-float a{color:#fff;font-size:26px;text-decoration:none;}
-.music-btn{position:fixed;left:20px;bottom:20px;background:#007bbd;color:#fff;border:none;border-radius:50%;width:50px;height:50px;font-size:20px;z-index:999;cursor:pointer;box-shadow:0 4px 12px #0002;}
-
-.draw-page{padding:30px 20px;text-align:center;}
-.draw-top-text{font-size:16px;color:#ff672b;font-weight:bold;margin-bottom:20px;}
-.chance-box{background:#fff2e6;border-radius:12px;padding:15px;margin-bottom:20px;}
-.chance-num{font-size:28px;color:#ff4444;font-weight:bold;}
-
-.wheel-box{width:300px;height:300px;margin:0 auto;position:relative;}
-.wheel{width:100%;height:100%;border-radius:50%;background:conic-gradient(#ff6b6b 0deg 60deg,#ffd93d 60deg 120deg,#6bcb77 120deg 180deg,#4d96ff 180deg 240deg,#b376f4 240deg 300deg,#ff9f43 300deg 360deg);position:relative;transition:all 4s cubic-bezier(0.17,0.67,0.13,0.99);box-shadow:0 0 20px #ffc896;}
-.wheel-center{position:absolute;width:80px;height:80px;background:#fff;border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#ff672b;box-shadow:0 2px 10px #0002;}
-.arrow{position:absolute;top:-10px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-top:30px solid #fff;z-index:3;}
-
-.draw-btn{margin-top:25px;padding:14px 40px;background:#ff672b;color:#fff;border:none;border-radius:50px;font-size:17px;font-weight:bold;cursor:pointer;}
-.share-btn{margin-top:12px;padding:12px 30px;background:#25D366;color:#fff;border:none;border-radius:50px;font-size:16px;font-weight:bold;cursor:pointer;}
-
-.popup{position:fixed;top:0;left:0;width:100%;height:100%;background:#00000077;display:none;align-items:center;justify-content:center;z-index:9999;}
-.popup-content{background:#fff;padding:30px;border-radius:16px;text-align:center;width:80%;max-width:350px;}
-.popup-content h3{color:#ff672b;margin-bottom:15px;font-size:20px;}
-.popup-content p{font-size:15px;color:#333;margin-bottom:20px;}
-.popup-close{padding:10px 25px;background:#007bbd;color:#fff;border:none;border-radius:8px;cursor:pointer;}
 </style>
 </head>
 <body>
 
-<audio id="bgMusic" loop preload="auto">
-  <source src="bg.mp3" type="audio/mpeg">
-<button class="music-btn" id="musicBtn">🔊</button>
-
+<!-- 顶部双标签切换 -->
 <div class="tab-nav">
     <button class="tab-btn active" onclick="switchTab(0)">Agent Program</button>
     <button class="tab-btn" onclick="switchTab(1)">Products & Inquiry</button>
-    <button class="tab-btn" onclick="switchTab(2)">Lucky Draw</button>
 </div>
 
 <div class="wrap">
-<div class="tab-content show">
-  <div class="lang-switch" onclick="toggleLang()">FR / EN</div>
-  <div class="head">
-    <h1 data-en="BECOME OUR AFRICA AGENT" data-fr="DEVENEZ NOTRE AGENT EN AFRIQUE"></h1>
-    <p data-en="China Import • Dropshipping • One Stop Business" data-fr="Import Chine • Dropshipping • Business Tout-en-Un"></p>
-    <div class="website-tag" data-en="Official Website: easthopemart.ng" data-fr="Site Officiel: easthopemart.ng"></div>
-  </div>
-  <div class="box">
-    <h2 data-en="Who We Support" data-fr="Qui Nous Soutenons"></h2>
-    <p data-en="✔ Africa small sellers & resellers" data-fr="✔ Petits vendeurs et revendeurs en Afrique"></p>
-    <p data-en="✔ WhatsApp business owners" data-fr="✔ Propriétaires de business WhatsApp"></p>
-    <p data-en="✔ Housewife / Student / Part-time agent" data-fr="✔ Femmes au foyer / Étudiants / Agents à temps partiel"></p>
-    <p data-en="✔ Nigeria / Ghana / West Africa buyers" data-fr="✔ Acheteurs du Nigeria / Ghana / Afrique de l'Ouest"></p>
-  </div>
-  <div class="box">
-    <h2 data-en="Our One-Stop Service" data-fr="Notre Service Tout-en-Un"></h2>
-    <p data-en="1. China factory sourcing & wholesale price" data-fr="1. Approvisionnement en usine Chine & prix de gros"></p>
-    <p data-en="2. Goods inspection & strict quality control" data-fr="2. Inspection des marchandises & contrôle qualité strict"></p>
-    <p data-en="3. Package consolidation & professional repacking" data-fr="3. Consolidation des colis & réemballage professionnel"></p>
-    <p data-en="4. Air & Sea shipping + local customs clearance" data-fr="4. Expédition aérienne et maritime + dédouanement local"></p>
-    <p data-en="5. Safe door-to-door delivery all over Nigeria" data-fr="5. Livraison porte-à-porte sûre dans tout le Nigeria"></p>
-  </div>
-  <div class="box">
-    <h2 data-en="Agent Profit Mode" data-fr="Mode de Profit de l'Agent"></h2>
-    <div class="highlight" data-en="NO STOCK • NO BIG INVESTMENT • ZERO RISK" data-fr="SANS STOCK • SANS GROS INVESTISSEMENT • RISQUE ZÉRO"></div>
-    <p data-en="You share products & take local orders" data-fr="Vous partagez les produits & prenez les commandes locales"></p>
-    <p data-en="We source, pack and ship from China" data-fr="Nous achetons, emballons et expédions depuis la Chine"></p>
-    <p data-en="You earn stable high profit from every order" data-fr="Vous gagnez un profit stable et élevé sur chaque commande"></p>
-  </div>
-  <div class="box">
-    <h2 data-en="Hot Selling Categories" data-fr="Catégories de Produits Populaires"></h2>
-    <div class="flex-row">
-      <div class="flex-item" data-en="Solar Energy System" data-fr="Système Énergie Solaire"></div>
-      <div class="flex-item" data-en="Hair & Beauty Items" data-fr="Articles Cheveux & Beauté"></div>
-    </div>
-    <div class="flex-row">
-      <div class="flex-item" data-en="Phone & Gadget Accessories" data-fr="Accessoires Téléphones & Gadgets"></div>
-      <div class="flex-item" data-en="Home & Kitchen Appliances" data-fr="Appareils Électroménagers"></div>
-    </div>
-  </div>
-  <div class="box">
-    <h2 data-en="Why Choose easthopemart.ng" data-fr="Pourquoi Choisir easthopemart.ng"></h2>
-    <p data-en="✔ Verified official Nigeria shopping platform" data-fr="✔ Plateforme de shopping officielle vérifiée au Nigeria"></p>
-    <p data-en="✔ Low MOQ & friendly trial order support" data-fr="✔ MOQ bas & support de commande d'essai convivial"></p>
-    <p data-en="✔ 100% original China factory low price" data-fr="✔ Prix bas direct usine Chine 100% original"></p>
-    <p data-en="✔ Stable shipping to Lagos & all Nigeria" data-fr="✔ Expédition stable vers Lagos & tout le Nigeria"></p>
-    <p data-en="✔ Long-term exclusive agent discount" data-fr="✔ Remise agent exclusive à long terme"></p>
-  </div>
-  <div class="cta" data-en="Start Your Profitable Africa Business Today" data-fr="Démarrez Votre Business Rentable en Afrique Aujourd'hui"></div>
-  <div class="contact">
-    <p data-en="Get Full Catalog & Exclusive Agent Price" data-fr="Obtenez le Catalogue Complet & le Prix Agent Exclusif"></p>
-    <p style="margin:8px 0" data-en="Official Website: easthopemart.ng" data-fr="Site Officiel: easthopemart.ng"></p>
-    <a class="whatsapp-btn" href="https://wa.me/8618069950755" data-en="Chat On WhatsApp Now: +8618069950755" data-fr="Discutez sur WhatsApp Maintenant: +8618069950755"></a>
-  </div>
-</div>
+    <!-- 标签1：原来的代理招商页面 -->
+    <div class="tab-content show">
+      <div class="lang-switch" onclick="toggleLang()">FR / EN</div>
 
-<div class="tab-content">
-  <div class="section">
-    <h2 class="section-title" data-en="Our Wholesale Products" data-fr="Nos Produits de Gros"></h2>
-    <div class="product-wrap">
-      <div class="product-card">
-        <h3 data-en="PPR Welding Machine" data-fr="Machine à souder PPR"></h3>
-        <div class="price" data-en="Factory Price" data-fr="Prix usine"></div>
-        <p data-en="Bulk wholesale" data-fr="Gros volume"></p>
+      <div class="head">
+        <h1 data-en="BECOME OUR AFRICA AGENT" data-fr="DEVENEZ NOTRE AGENT EN AFRIQUE"></h1>
+        <p data-en="China Import • Dropshipping • One Stop Business" data-fr="Import Chine • Dropshipping • Business Tout-en-Un"></p>
+        <div class="website-tag" data-en="Official Website: easthopemart.ng" data-fr="Site Officiel: easthopemart.ng"></div>
       </div>
-      <div class="product-card">
-        <h3 data-en="LED Lights Series" data-fr="Série Lumières LED"></h3>
-        <div class="price" data-en="Low MOQ" data-fr="MOQ bas"></div>
-        <p data-en="Africa hot sale" data-fr="Meilleure vente Afrique"></p>
+
+      <div class="box">
+        <h2 data-en="Who We Support" data-fr="Qui Nous Soutenons"></h2>
+        <p data-en="✔ Africa small sellers & resellers" data-fr="✔ Petits vendeurs et revendeurs en Afrique"></p>
+        <p data-en="✔ WhatsApp business owners" data-fr="✔ Propriétaires de business WhatsApp"></p>
+        <p data-en="✔ Housewife / Student / Part-time agent" data-fr="✔ Femmes au foyer / Étudiants / Agents à temps partiel"></p>
+        <p data-en="✔ Nigeria / Ghana / West Africa buyers" data-fr="✔ Acheteurs du Nigeria / Ghana / Afrique de l'Ouest"></p>
       </div>
-      <div class="product-card">
-        <h3 data-en="Auto Spare Parts" data-fr="Pièces Automobiles"></h3>
-        <div class="price" data-en="Mixed Order" data-fr="Commande mixte"></div>
-        <p data-en="Stable supply" data-fr="Approvisionnement stable"></p>
+
+      <div class="box">
+        <h2 data-en="Our One-Stop Service" data-fr="Notre Service Tout-en-Un"></h2>
+        <p data-en="1. China factory sourcing & wholesale price" data-fr="1. Approvisionnement en usine Chine & prix de gros"></p>
+        <p data-en="2. Goods inspection & strict quality control" data-fr="2. Inspection des marchandises & contrôle qualité strict"></p>
+        <p data-en="3. Package consolidation & professional repacking" data-fr="3. Consolidation des colis & réemballage professionnel"></p>
+        <p data-en="4. Air & Sea shipping + local customs clearance" data-fr="4. Expédition aérienne et maritime + dédouanement local"></p>
+        <p data-en="5. Safe door-to-door delivery all over Nigeria" data-fr="5. Livraison porte-à-porte sûre dans tout le Nigeria"></p>
       </div>
-      <div class="product-card">
-        <h3 data-en="Home Hardware Tools" data-fr="Outils Quincaillerie"></h3>
-        <div class="price" data-en="One-stop Buy" data-fr="Achat tout-en-un"></div>
-        <p data-en="China direct" data-fr="Direct Chine"></p>
+
+      <div class="box">
+        <h2 data-en="Agent Profit Mode" data-fr="Mode de Profit de l'Agent"></h2>
+        <div class="highlight" data-en="NO STOCK • NO BIG INVESTMENT • ZERO RISK" data-fr="SANS STOCK • SANS GROS INVESTISSEMENT • RISQUE ZÉRO"></div>
+        <p data-en="You share products & take local orders" data-fr="Vous partagez les produits & prenez les commandes locales"></p>
+        <p data-en="We source, pack and ship from China" data-fr="Nous achetons, emballons et expédions depuis la Chine"></p>
+        <p data-en="You earn stable high profit from every order" data-fr="Vous gagnez un profit stable et élevé sur chaque commande"></p>
       </div>
-      <div class="product-card">
-        <h3 data-en="Ice Maker Machine" data-fr="Machine à glace"></h3>
-        <div class="price" data-en="Big Stock" data-fr="Grand stock"></div>
-        <p data-en="Fast shipment" data-fr="Expédition rapide"></p>
+
+      <div class="box">
+        <h2 data-en="Hot Selling Categories" data-fr="Catégories de Produits Populaires"></h2>
+        <div class="flex-row">
+          <div class="flex-item" data-en="Solar Energy System" data-fr="Système Énergie Solaire"></div>
+          <div class="flex-item" data-en="Hair & Beauty Items" data-fr="Articles Cheveux & Beauté"></div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item" data-en="Phone & Gadget Accessories" data-fr="Accessoires Téléphones & Gadgets"></div>
+          <div class="flex-item" data-en="Home & Kitchen Appliances" data-fr="Appareils Électroménagers"></div>
+        </div>
       </div>
-      <div class="product-card">
-        <h3 data-en="Packing Bottle" data-fr="Bouteille d'emballage"></h3>
-        <div class="price" data-en="Custom OK" data-fr="Personnalisation OK"></div>
-        <p data-en="Support OEM" data-fr="Support OEM"></p>
+
+      <div class="box">
+        <h2 data-en="Why Choose easthopemart.ng" data-fr="Pourquoi Choisir easthopemart.ng"></h2>
+        <p data-en="✔ Verified official Nigeria shopping platform" data-fr="✔ Plateforme de shopping officielle vérifiée au Nigeria"></p>
+        <p data-en="✔ Low MOQ & friendly trial order support" data-fr="✔ MOQ bas & support de commande d'essai convivial"></p>
+        <p data-en="✔ 100% original China factory low price" data-fr="✔ Prix bas direct usine Chine 100% original"></p>
+        <p data-en="✔ Stable shipping to Lagos & all Nigeria" data-fr="✔ Expédition stable vers Lagos & tout le Nigeria"></p>
+        <p data-en="✔ Long-term exclusive agent discount" data-fr="✔ Remise agent exclusive à long terme"></p>
+      </div>
+
+      <div class="cta" data-en="Start Your Profitable Africa Business Today" data-fr="Démarrez Votre Business Rentable en Afrique Aujourd'hui"></div>
+
+      <div class="contact">
+        <p data-en="Get Full Catalog & Exclusive Agent Price" data-fr="Obtenez le Catalogue Complet & le Prix Agent Exclusif"></p>
+        <p style="margin:8px 0" data-en="Official Website: easthopemart.ng" data-fr="Site Officiel: easthopemart.ng"></p>
+        <a class="whatsapp-btn" href="https://wa.me/8618069950755" data-en="Chat On WhatsApp Now: +8618069950755" data-fr="Discutez sur WhatsApp Maintenant: +8618069950755"></a>
+
+        <div class="qr-code-box">
+          <img src="data:image/png;base64,【在这里粘贴你的二维码Base64编码】" alt="WhatsApp QR Code">
+          <p data-en="Scan QR Code to add us on WhatsApp" data-fr="Scannez le QR code pour nous ajouter sur WhatsApp"></p>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="form-box">
-    <h2 class="section-title" data-en="Send Wholesale Inquiry" data-fr="Envoyer une Demande de Gros"></h2>
-    <input type="text" placeholder="Your Full Name / Votre nom complet">
-    <input type="text" placeholder="Interested Products / Produits intéressés">
-    <input type="text" placeholder="Quantity & Country / Quantité & Pays">
-    <input type="text" placeholder="Your WhatsApp Number">
-    <textarea rows="4" placeholder="Remark: MOQ, shipping, packaging... / Remarque"></textarea>
-    <button data-en="Submit Now" data-fr="Soumettre maintenant"></button>
-  </div>
-</div>
 
-<div class="tab-content">
-  <div class="draw-page">
-    <div class="draw-top-text" data-en="Daily Free Lucky Draw! Share to get more chances" data-fr="Tirage quotidien gratuit ! Partagez pour plus de chances"></div>
+    <!-- 标签2：产品列表 + 询价表单（独立一屏） -->
+    <div class="tab-content">
+        <div class="section">
+            <h2 class="section-title" data-en="Our Wholesale Products" data-fr="Nos Produits de Gros"></h2>
+            <div class="product-wrap">
+                <div class="product-card">
+                    <h3 data-en="PPR Welding Machine" data-fr="Machine à souder PPR"></h3>
+                    <div class="price" data-en="Factory Price" data-fr="Prix usine"></div>
+                    <p data-en="Bulk wholesale" data-fr="Gros volume"></p>
+                </div>
+                <div class="product-card">
+                    <h3 data-en="LED Lights Series" data-fr="Série Lumières LED"></h3>
+                    <div class="price" data-en="Low MOQ" data-fr="MOQ bas"></div>
+                    <p data-en="Africa hot sale" data-fr="Meilleure vente Afrique"></p>
+                </div>
+                <div class="product-card">
+                    <h3 data-en="Auto Spare Parts" data-fr="Pièces Automobiles"></h3>
+                    <div class="price" data-en="Mixed Order" data-fr="Commande mixte"></div>
+                    <p data-en="Stable supply" data-fr="Approvisionnement stable"></p>
+                </div>
+                <div class="product-card">
+                    <h3 data-en="Home Hardware Tools" data-fr="Outils Quincaillerie"></h3>
+                    <div class="price" data-en="One-stop Buy" data-fr="Achat tout-en-un"></div>
+                    <p data-en="China direct" data-fr="Direct Chine"></p>
+                </div>
+                <div class="product-card">
+                    <h3 data-en="Ice Maker Machine" data-fr="Machine à glace"></h3>
+                    <div class="price" data-en="Big Stock" data-fr="Grand stock"></div>
+                    <p data-en="Fast shipment" data-fr="Expédition rapide"></p>
+                </div>
+                <div class="product-card">
+                    <h3 data-en="Packing Bottle" data-fr="Bouteille d'emballage"></h3>
+                    <div class="price" data-en="Custom OK" data-fr="Personnalisation OK"></div>
+                    <p data-en="Support OEM" data-fr="Support OEM"></p>
+                </div>
+            </div>
+        </div>
 
-    <div class="chance-box">
-      <p data-en="Your Remaining Draw Chance" data-fr="Vos chances restantes"></p>
-      <div class="chance-num" id="chanceCount">1</div>
-      <p data-en="Chances" data-fr="Chances"></p>
+        <div class="form-box">
+            <h2 class="section-title" data-en="Send Wholesale Inquiry" data-fr="Envoyer une Demande de Gros"></h2>
+            <input type="text" placeholder="Your Full Name / Votre nom complet">
+            <input type="text" placeholder="Interested Products / Produits intéressés">
+            <input type="text" placeholder="Quantity & Country / Quantité & Pays">
+            <input type="text" placeholder="Your WhatsApp Number">
+            <textarea rows="4" placeholder="Remark: MOQ, shipping, packaging... / Remarque"></textarea>
+            <button data-en="Submit Now" data-fr="Soumettre maintenant"></button>
+        </div>
     </div>
-
-    <div class="wheel-box">
-      <div class="arrow"></div>
-      <div class="wheel" id="wheel"></div>
-      <div class="wheel-center" data-en="START" data-fr="DÉBUT"></div>
-    </div>
-
-    <button class="draw-btn" id="drawBtn" data-en="Start Lucky Draw" data-fr="Commencer le tirage"></button>
-    <br>
-    <button class="share-btn" id="shareBtn" data-en="Share & Get +1 Chance" data-fr="Partager +1 Chance"></button>
-  </div>
-</div>
 </div>
 
-<div class="popup" id="popup">
-  <div class="popup-content">
-    <h3 id="popTitle">Congratulations!</h3>
-    <p id="popText">You won the prize!</p>
-    <button class="popup-close" onclick="closePop()">OK</button>
-  </div>
-</div>
-
+<!-- 全局悬浮WhatsApp -->
 <div class="whatsapp-float">
     <a href="https://wa.me/8618069950755" target="_blank">💬</a>
 </div>
 
 <script>
+// 双标签切换
 function switchTab(index){
     const tabs = document.querySelectorAll('.tab-content');
     const btns = document.querySelectorAll('.tab-btn');
@@ -233,6 +205,7 @@ function switchTab(index){
     btns[index].classList.add('active');
 }
 
+// 双语语言切换
 let currentLang = navigator.language || navigator.userLanguage;
 let lang = currentLang.startsWith('fr') ? 'fr' : 'en';
 
@@ -243,113 +216,13 @@ function initLang(lang) {
   document.querySelector('html').setAttribute('lang', lang);
   document.querySelector('.lang-switch').textContent = lang === 'fr' ? 'FR / EN' : 'EN / FR';
 }
+
 function toggleLang() {
   lang = lang === 'en' ? 'fr' : 'en';
   initLang(lang);
 }
+
 initLang(lang);
-
-const bgMusic = document.getElementById('bgMusic');
-const musicBtn = document.getElementById('musicBtn');
-let musicPlay = false;
-document.body.addEventListener('click',()=>{
-  if(!musicPlay){
-    bgMusic.volume = 0.3;
-    bgMusic.play();
-    musicPlay = true;
-    musicBtn.innerText = '🔊';
-  }
-})
-musicBtn.onclick = function(){
-  if(bgMusic.paused){bgMusic.play();this.innerText='🔊'}
-  else{bgMusic.pause();this.innerText='🔇'}
-}
-
-// 概率：大奖10%  中等20%(免服务费+折扣)  普通70%
-let chance = 1;
-let isDrawing = false;
-const wheel = document.getElementById('wheel');
-const chanceDom = document.getElementById('chanceCount');
-const drawBtn = document.getElementById('drawBtn');
-const shareBtn = document.getElementById('shareBtn');
-const popup = document.getElementById('popup');
-const popTitle = document.getElementById('popTitle');
-const popText = document.getElementById('popText');
-
-// 已改成：免服务费
-const prizeListEn = [
-  "Service Fee Waiver",
-  "5% Wholesale Discount",
-  "Free Product Sample",
-  "Agent Exclusive Price",
-  "$10 Store Credit",
-  "Priority Shipping Service"
-];
-const prizeListFr = [
-  "Frais de service gratuit",
-  "Remise Gros 5%",
-  "Échantillon Gratuit",
-  "Prix Exclusif Agent",
-  "Crédit Boutique 10$",
-  "Service Livraison Prioritaire"
-];
-const angleArr = [30,90,150,210,270,330];
-
-function getRandomPrizeIndex(){
-  let r = Math.random() * 100;
-  // 大奖 10%
-  if(r < 10){
-    return [2,4][Math.floor(Math.random()*2)];
-  }
-  // 中等：免服务费 + 折扣 20%
-  else if(r >= 10 && r < 30){
-    return [0,1][Math.floor(Math.random()*2)];
-  }
-  // 普通安慰奖 70%
-  else{
-    return [3,5][Math.floor(Math.random()*2)];
-  }
-}
-
-drawBtn.onclick = function(){
-  if(isDrawing)return;
-  if(chance <= 0){
-    if(lang==='en')alert("No chance left! Please share to get more.")
-    else alert("Plus de chance ! Partagez pour en obtenir.")
-    return;
-  }
-  isDrawing = true;
-  chance--;
-  chanceDom.innerText = chance;
-
-  let randomIndex = getRandomPrizeIndex();
-  let targetAngle = 1800 + angleArr[randomIndex];
-  wheel.style.transform = `rotate(${targetAngle}deg)`;
-
-  setTimeout(()=>{
-    isDrawing = false;
-    let prize = lang==='en' ? prizeListEn[randomIndex] : prizeListFr[randomIndex];
-    if(lang==='en'){
-      popTitle.innerText = "🎉 Congratulations!";
-      popText.innerText = "You won: " + prize;
-    }else{
-      popTitle.innerText = "🎉 Félicitations !";
-      popText.innerText = "Vous avez gagné : " + prize;
-    }
-    popup.style.display = "flex";
-  },4000)
-}
-
-shareBtn.onclick = function(){
-  chance += 1;
-  chanceDom.innerText = chance;
-  if(lang==='en')alert("✅ Share success! You get +1 draw chance")
-  else alert("✅ Partage réussi ! +1 chance obtenue")
-}
-
-function closePop(){
-  popup.style.display = "none";
-}
 </script>
 
 </body>
