@@ -56,9 +56,38 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
 /* 全局悬浮WhatsApp */
 .whatsapp-float{position:fixed;right:20px;bottom:20px;background:#25D366;border-radius:50%;width:55px;height:55px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px #0003;z-index:999;}
 .whatsapp-float a{color:#fff;font-size:26px;text-decoration:none;}
+
+/* -------- WhatsApp 延迟弹窗样式 -------- */
+.popup-mask{
+    position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);
+    display:none;align-items:center;justify-content:center;z-index:9999;
+}
+.popup-box{
+    background:#fff;width:90%;max-width:400px;border-radius:16px;padding:25px;text-align:center;
+}
+.popup-box h3{color:#007bbd;margin-bottom:15px;}
+.popup-close{
+    margin-top:12px;padding:10px 20px;border:none;background:#999;color:#fff;border-radius:8px;cursor:pointer;
+}
+
+/* -------- 一键分享按钮 -------- */
+.share-box{
+    max-width:800px;margin:15px auto;text-align:center;
+}
+.share-btn{
+    display:inline-block;padding:10px 16px;border-radius:8px;color:#fff;text-decoration:none;margin:0 6px;font-weight:bold;
+}
+.share-wa{background:#25D366;}
+.share-fb{background:#1877F2;}
 </style>
 </head>
 <body>
+
+<!-- 一键分享区域 -->
+<div class="share-box">
+    <a class="share-btn share-wa" id="shareWA" href="javascript:;">WhatsApp Share</a>
+    <a class="share-btn share-fb" id="shareFB" href="javascript:;">Facebook Share</a>
+</div>
 
 <!-- 顶部双标签切换 -->
 <div class="tab-nav">
@@ -99,7 +128,7 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
         <div class="highlight" data-en="NO STOCK • NO BIG INVESTMENT • ZERO RISK" data-fr="SANS STOCK • SANS GROS INVESTISSEMENT • RISQUE ZÉRO"></div>
         <p data-en="You share products & take local orders" data-fr="Vous partagez les produits & prenez les commandes locales"></p>
         <p data-en="We source, pack and ship from China" data-fr="Nous achetons, emballons et expédions depuis la Chine"></p>
-        <p data-en="You earn stable high profit from every order" data-fr="Vous gagnez un profit stable et élevé sur chaque commande"></p>
+        <p data-en="You earn stable high profit from every order" data-fr="You earn stable high profit from every order"></p>
       </div>
 
       <div class="box">
@@ -158,31 +187,30 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
                     <p data-en="Stable supply" data-fr="Approvisionnement stable"></p>
                 </div>
                 <div class="product-card">
-                    <h3 data-en="Home Hardware Tools" data-fr="Outils Quincaillerie"></h3>
-                    <div class="price" data-en="One-stop Buy" data-fr="Achat tout-en-un"></div>
-                    <p data-en="China direct" data-fr="Direct Chine"></p>
+                    <h3 data-en="Home Ice Maker" data-fr="Machine à glace domestique"></h3>
+                    <div class="price" data-en="Hot Item" data-fr="Article chaud"></div>
+                    <p data-en="Fast delivery" data-fr="Livraison rapide"></p>
                 </div>
                 <div class="product-card">
-                    <h3 data-en="Ice Maker Machine" data-fr="Machine à glace"></h3>
-                    <div class="price" data-en="Big Stock" data-fr="Grand stock"></div>
-                    <p data-en="Fast shipment" data-fr="Expédition rapide"></p>
+                    <h3 data-en="Projector Lamp" data-fr="Lampe projecteur"></h3>
+                    <div class="price" data-en="Good Profit" data-fr="Bon bénéfice"></div>
+                    <p data-en="Agent welcome" data-fr="Agent bienvenu"></p>
                 </div>
                 <div class="product-card">
-                    <h3 data-en="Packing Bottle" data-fr="Bouteille d'emballage"></h3>
-                    <div class="price" data-en="Custom OK" data-fr="Personnalisation OK"></div>
-                    <p data-en="Support OEM" data-fr="Support OEM"></p>
+                    <h3 data-en="Daily Necessities" data-fr="Articles de nécessité quotidienne"></h3>
+                    <div class="price" data-en="Easy Sell" data-fr="Facile à vendre"></div>
+                    <p data-en="Repeat order" data-fr="Commande répétée"></p>
                 </div>
             </div>
         </div>
 
         <div class="form-box">
-            <h2 class="section-title" data-en="Send Wholesale Inquiry" data-fr="Envoyer une Demande de Gros"></h2>
-            <input type="text" placeholder="Your Full Name / Votre nom complet">
-            <input type="text" placeholder="Interested Products / Produits intéressés">
-            <input type="text" placeholder="Quantity & Country / Quantité & Pays">
-            <input type="text" placeholder="Your WhatsApp Number">
-            <textarea rows="4" placeholder="Remark: MOQ, shipping, packaging... / Remarque"></textarea>
-            <button data-en="Submit Now" data-fr="Soumettre maintenant"></button>
+            <h2 class="section-title" data-en="Send Inquiry Now" data-fr="Envoyez votre demande maintenant"></h2>
+            <input type="text" placeholder="Your Name / Votre nom" data-placeholder-en="Your Name" data-placeholder-fr="Votre nom">
+            <input type="text" placeholder="Country / Pays" data-placeholder-en="Country" data-placeholder-fr="Pays">
+            <input type="text" placeholder="WhatsApp / Phone" data-placeholder-en="WhatsApp / Phone" data-placeholder-fr="WhatsApp / Téléphone">
+            <textarea rows="4" placeholder="Your product inquiry / Votre demande de produit"></textarea>
+            <button data-en="Submit Inquiry" data-fr="Soumettre la demande">Submit Inquiry</button>
         </div>
     </div>
 </div>
@@ -192,37 +220,71 @@ body{background:#f5f7fa;padding:20px;line-height:1.6;position:relative;}
     <a href="https://wa.me/8618069950755" target="_blank">💬</a>
 </div>
 
+<!-- WhatsApp 3秒延迟咨询弹窗 -->
+<div class="popup-mask" id="waPopup">
+    <div class="popup-box">
+        <h3 data-en="Need More Info?" data-fr="Besoin de plus d'infos ?"></h3>
+        <p data-en="Contact us on WhatsApp for catalog & agent price" data-fr="Contactez-nous sur WhatsApp pour catalogue et prix agent"></p>
+        <a class="whatsapp-btn" href="https://wa.me/8618069950755" target="_blank" style="margin:20px 0;display:inline-block;">WhatsApp Now</a>
+        <br>
+        <button class="popup-close" onclick="closePopup()">Close</button>
+    </div>
+</div>
+
 <script>
-// 双标签切换
-function switchTab(index){
+// ========= 双标签切换 =========
+function switchTab(idx){
     const tabs = document.querySelectorAll('.tab-content');
     const btns = document.querySelectorAll('.tab-btn');
-    tabs.forEach((item,i)=>{
-        item.classList.remove('show');
+    tabs.forEach((tab,i)=>{
+        tab.classList.remove('show');
         btns[i].classList.remove('active');
     });
-    tabs[index].classList.add('show');
-    btns[index].classList.add('active');
+    tabs[idx].classList.add('show');
+    btns[idx].classList.add('active');
 }
 
-// 双语语言切换
-let currentLang = navigator.language || navigator.userLanguage;
-let lang = currentLang.startsWith('fr') ? 'fr' : 'en';
+// ========= 英法双语切换 =========
+let isEN = true;
+function toggleLang(){
+    isEN = !isEN;
+    document.querySelectorAll('[data-en]').forEach(el=>{
+        el.innerText = isEN ? el.dataset.en : el.dataset.fr;
+    });
+    // 同步placeholder
+    document.querySelectorAll('[data-placeholder-en]').forEach(el=>{
+        el.placeholder = isEN ? el.dataset.placeholderEn : el.dataset.placeholderFr;
+    });
+}
+// 默认加载英文
+toggleLang();
 
-function initLang(lang) {
-  document.querySelectorAll('[data-en]').forEach(el => {
-    el.textContent = el.getAttribute(`data-${lang}`);
-  });
-  document.querySelector('html').setAttribute('lang', lang);
-  document.querySelector('.lang-switch').textContent = lang === 'fr' ? 'FR / EN' : 'EN / FR';
+// ========= 3秒延迟WhatsApp弹窗 + 关闭后不再弹出 =========
+let popupClosed = false;
+setTimeout(()=>{
+    if(!popupClosed){
+        document.getElementById('waPopup').style.display = 'flex';
+    }
+},3000);
+
+function closePopup(){
+    document.getElementById('waPopup').style.display = 'none';
+    popupClosed = true;
 }
 
-function toggleLang() {
-  lang = lang === 'en' ? 'fr' : 'en';
-  initLang(lang);
-}
+// ========= WhatsApp / Facebook 一键分享 =========
+const pageUrl = window.location.href;
+const shareTextEN = "Become Africa agent + China wholesale products, low risk high profit!";
+const shareTextFR = "Devenez agent Afrique + produits de gros Chine, faible risque et haut bénéfice !";
 
-initLang(lang);
+document.getElementById("shareWA").onclick = function(){
+    let text = isEN ? shareTextEN : shareTextFR;
+    window.open(`https://wa.me/?text=${encodeURIComponent(text + "\n" + pageUrl)}`,"_blank");
+};
+
+document.getElementById("shareFB").onclick = function(){
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`,"_blank");
+};
 </script>
 
 </body>
